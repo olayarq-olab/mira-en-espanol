@@ -3,8 +3,11 @@ import { newspapers, tropeTypes, type Newspaper, type TropeType } from "@/data/e
 interface FilterSidebarProps {
   selectedNewspapers: Newspaper[];
   selectedTropes: TropeType[];
+  selectedAuthors: string[];
+  allAuthors: string[];
   onToggleNewspaper: (n: Newspaper) => void;
   onToggleTrope: (t: TropeType) => void;
+  onToggleAuthor: (a: string) => void;
   onClearAll: () => void;
   totalEntries: number;
   filteredCount: number;
@@ -34,13 +37,19 @@ const FilterChip = ({
 export default function FilterSidebar({
   selectedNewspapers,
   selectedTropes,
+  selectedAuthors,
+  allAuthors,
   onToggleNewspaper,
   onToggleTrope,
+  onToggleAuthor,
   onClearAll,
   totalEntries,
   filteredCount,
 }: FilterSidebarProps) {
-  const hasFilters = selectedNewspapers.length > 0 || selectedTropes.length > 0;
+  const hasFilters =
+    selectedNewspapers.length > 0 ||
+    selectedTropes.length > 0 ||
+    selectedAuthors.length > 0;
 
   return (
     <aside className="border-r border-foreground/10 p-6 space-y-8 h-full overflow-y-auto">
@@ -77,6 +86,20 @@ export default function FilterSidebar({
               label={n}
               active={selectedNewspapers.includes(n)}
               onClick={() => onToggleNewspaper(n)}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="border-t border-foreground/10 pt-4">
+        <p className="label-mono mb-3">Autor</p>
+        <div className="flex flex-wrap gap-2">
+          {allAuthors.map((a) => (
+            <FilterChip
+              key={a}
+              label={a}
+              active={selectedAuthors.includes(a)}
+              onClick={() => onToggleAuthor(a)}
             />
           ))}
         </div>
