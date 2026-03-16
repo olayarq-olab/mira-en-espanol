@@ -6,7 +6,7 @@ const listItem = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { ease: [0.16, 1, 0.3, 1], duration: 0.4 },
+    transition: { ease: [0.16, 1, 0.3, 1] as [number, number, number, number], duration: 0.4 },
   },
 };
 
