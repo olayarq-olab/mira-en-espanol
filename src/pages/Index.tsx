@@ -5,7 +5,10 @@ import SiteHeader from "@/components/SiteHeader";
 import FilterSidebar from "@/components/FilterSidebar";
 import EntryRow from "@/components/EntryRow";
 import EntryModal from "@/components/EntryModal";
+import HeroSection from "@/components/HeroSection";
 import type { Entry } from "@/data/entries";
+
+type SortMode = "date-desc" | "date-asc" | "relevance";
 
 const ITEMS_PER_PAGE = 8;
 
@@ -18,20 +21,44 @@ const listContainer = {
 };
 
 export default function Index() {
+  const [showHero, setShowHero] = useState(true);
   const [selectedNewspapers, setSelectedNewspapers] = useState<Newspaper[]>([]);
   const [selectedTropes, setSelectedTropes] = useState<TropeType[]>([]);
+  const [selectedAuthors, setSelectedAuthors] = useState<string[]>([]);
+  const [sortMode, setSortMode] = useState<SortMode>("date-desc");
   const [selectedEntry, setSelectedEntry] = useState<Entry | null>(null);
   const [page, setPage] = useState(1);
 
+  const allAuthors = useMemo(() => {
+    return [...new Set(entries.map((e) => e.author))].sort();
+  }, []);
+
   const filtered = useMemo(() => {
-    return entries.filter((e) => {
+    let result = entries.filter((e) => {
       if (selectedNewspapers.length && !selectedNewspapers.includes(e.newspaper))
         return false;
       if (selectedTropes.length && !selectedTropes.includes(e.trope))
         return false;
+      if (selectedAuthors.length && !selectedAuthors.includes(e.author))
+        return false;
       return true;
     });
-  }, [selectedNewspapers, selectedTropes]);
+
+    // Sort
+    if (sortMode === "date-desc") {
+      result = [...result].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    } else if (sortMode === "date-asc") {
+      result = [...result].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    } else if (sortMode === "relevance") {
+      // Relevance: flagged first, then by date desc
+      result = [...result].sort((a, b) => {
+        if (a.flagged !== b.flagged) return a.flagged ? -1 : 1;
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      });
+    }
+
+    return result;
+  }, [selectedNewspapers, selectedTropes, selectedAuthors, sortMode]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
   const paginated = filtered.slice(
@@ -53,43 +80,82 @@ export default function Index() {
     setPage(1);
   };
 
+  const toggleAuthor = (a: string) => {
+    setSelectedAuthors((prev) =>
+      prev.includes(a) ? prev.filter((x) => x !== a) : [...prev, a]
+    );
+    setPage(1);
+  };
+
   const clearAll = () => {
     setSelectedNewspapers([]);
     setSelectedTropes([]);
+    setSelectedAuthors([]);
     setPage(1);
   };
+
+  if (showHero) {
+    return <HeroSection onEnter={() => setShowHero(false)} />;
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <SiteHeader />
 
       <div className="flex flex-1 overflow-hidden">
-        {/* Sidebar — 4 cols */}
+        {/* Sidebar */}
         <div className="hidden lg:block w-[33.333%] border-r border-foreground/10">
           <FilterSidebar
             selectedNewspapers={selectedNewspapers}
             selectedTropes={selectedTropes}
+            selectedAuthors={selectedAuthors}
+            allAuthors={allAuthors}
             onToggleNewspaper={toggleNewspaper}
             onToggleTrope={toggleTrope}
+            onToggleAuthor={toggleAuthor}
             onClearAll={clearAll}
             totalEntries={entries.length}
             filteredCount={filtered.length}
           />
         </div>
 
-        {/* Content — 8 cols */}
+        {/* Content */}
         <div className="flex-1 flex flex-col overflow-y-auto">
-          {/* Section header */}
-          <div className="border-b border-foreground/10 px-6 py-3 flex items-baseline justify-between">
+          {/* Section header with sort */}
+          <div className="border-b border-foreground/10 px-6 py-3 flex items-center justify-between gap-4">
             <span className="label-mono">Últimas Entradas</span>
-            <span className="label-mono tabular">
-              Página {page} de {totalPages}
-            </span>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <span className="label-mono">Ordenar:</span>
+                {(
+                  [
+                    { value: "date-desc", label: "Recientes" },
+                    { value: "date-asc", label: "Antiguas" },
+                    { value: "relevance", label: "Relevancia" },
+                  ] as { value: SortMode; label: string }[]
+                ).map((opt) => (
+                  <button
+                    key={opt.value}
+                    onClick={() => { setSortMode(opt.value); setPage(1); }}
+                    className={`font-mono-ui text-[10px] uppercase px-2 py-1 border transition-colors duration-150 ${
+                      sortMode === opt.value
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "border-foreground/20 text-muted-foreground hover:bg-muted"
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+              <span className="label-mono tabular">
+                Pág. {page}/{totalPages}
+              </span>
+            </div>
           </div>
 
           {/* Entry list */}
           <motion.div
-            key={`${selectedNewspapers.join()}-${selectedTropes.join()}-${page}`}
+            key={`${selectedNewspapers.join()}-${selectedTropes.join()}-${selectedAuthors.join()}-${sortMode}-${page}`}
             variants={listContainer}
             initial="hidden"
             animate="show"
