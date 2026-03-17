@@ -155,6 +155,10 @@ export default function Index() {
         )}
       </motion.div>
 
+      {/* Action CTA when filtering by author */}
+      <ActionBanner selectedAuthors={selectedAuthors} />
+
+
       {/* Pagination */}
       {totalPages > 1 && (
         <div className="border-t border-foreground/10 px-6 py-3 flex items-center justify-between">
