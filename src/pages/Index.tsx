@@ -7,6 +7,7 @@ import FilterBar from "@/components/FilterBar";
 import EntryRow from "@/components/EntryRow";
 import EntryModal from "@/components/EntryModal";
 import HeroSection from "@/components/HeroSection";
+import ActionBanner from "@/components/ActionBanner";
 import type { Entry } from "@/data/entries";
 
 type SortMode = "date-desc" | "date-asc" | "relevance";
