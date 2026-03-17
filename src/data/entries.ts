@@ -39,6 +39,7 @@ export const entries: Entry[] = [
     section: "Internacional",
     trope: "Falsa Equivalencia",
     flagged: true,
+    fragment: "Ambas partes han cometido atrocidades equivalentes, lo que hace imposible distinguir entre agresor y agredido en este conflicto milenario.",
     excerpt:
       "El artículo equipara la defensa legítima con la agresión, omitiendo contexto histórico fundamental y reproduciendo un patrón de falsa equivalencia documentado en 14 instancias anteriores del mismo medio.",
   },
@@ -51,6 +52,7 @@ export const entries: Entry[] = [
     section: "Opinión",
     trope: "Conspiración",
     flagged: true,
+    fragment: "Las élites financieras que manejan los hilos del poder global desde sus despachos en Nueva York y Tel Aviv dictan las políticas económicas que sufren los ciudadanos europeos.",
     excerpt:
       "El editorial recurre a tropos conspirativos sobre el control financiero global, empleando lenguaje codificado que reproduce estereotipos antisemitas clásicos sin nombrarlos explícitamente.",
   },
@@ -63,6 +65,7 @@ export const entries: Entry[] = [
     section: "Política",
     trope: "Doble Lealtad",
     flagged: false,
+    fragment: "Cabe preguntarse dónde reside la verdadera lealtad de estos ciudadanos que, siendo españoles, anteponen los intereses de un Estado extranjero a los de su propio país.",
     excerpt:
       "La cobertura cuestiona implícitamente la lealtad de ciudadanos españoles de origen judío, sugiriendo un conflicto de intereses inherente a su identidad.",
   },
@@ -75,6 +78,7 @@ export const entries: Entry[] = [
     section: "Opinión",
     trope: "Conspiración",
     flagged: true,
+    fragment: "Existe un lobby perfectamente organizado, con tentáculos en los medios, la banca y los parlamentos, que opera en las sombras para silenciar cualquier crítica.",
     excerpt:
       "La columna describe una influencia política organizada utilizando terminología que evoca directamente los Protocolos de los Sabios de Sión, un texto antisemita fabricado.",
   },
@@ -87,6 +91,7 @@ export const entries: Entry[] = [
     section: "Internacional",
     trope: "Deshumanización",
     flagged: false,
+    fragment: "Mientras las víctimas palestinas tienen nombre, rostro y familia, del otro lado solo se contabilizan cifras frías, como si la aritmética del dolor fuese selectiva.",
     excerpt:
       "El reportaje emplea un lenguaje selectivo que deshumaniza a las víctimas de un lado del conflicto, aplicando un doble rasero en la cobertura de bajas civiles.",
   },
@@ -99,6 +104,7 @@ export const entries: Entry[] = [
     section: "Economía",
     trope: "Estereotipo Económico",
     flagged: true,
+    fragment: "No es casualidad que los principales beneficiarios económicos de cada conflicto armado compartan un perfil étnico y financiero muy concreto.",
     excerpt:
       "El análisis económico recurre a estereotipos sobre el control financiero, vinculando identidades étnicas con beneficios económicos de conflictos armados.",
   },
@@ -111,6 +117,7 @@ export const entries: Entry[] = [
     section: "Cultura",
     trope: "Negación",
     flagged: false,
+    fragment: "La narrativa del Holocausto ha sido instrumentalizada durante décadas como escudo político, impidiendo cualquier debate racional sobre las políticas actuales.",
     excerpt:
       "El artículo minimiza hechos históricos documentados, presentando la memoria del Holocausto como una 'narrativa instrumentalizada' al servicio de intereses geopolíticos contemporáneos.",
   },
@@ -123,6 +130,7 @@ export const entries: Entry[] = [
     section: "Internacional",
     trope: "Demonización",
     flagged: true,
+    fragment: "El mapa muestra la expansión territorial progresiva, presentada sin contexto como una ocupación colonial planificada desde el primer día.",
     excerpt:
       "La representación cartográfica omite sistemáticamente datos territoriales verificados, presentando una narrativa visual que demoniza a una de las partes del conflicto.",
   },
@@ -135,6 +143,7 @@ export const entries: Entry[] = [
     section: "Sociedad",
     trope: "Doble Lealtad",
     flagged: false,
+    fragment: "¿Pero usted se siente más español o más judío? Porque llegado el momento, tendrá que elegir un bando, ¿no?",
     excerpt:
       "Las preguntas de la entrevista presuponen un conflicto de identidad, forzando a los entrevistados a justificar su pertenencia nacional frente a su identidad cultural.",
   },
@@ -147,6 +156,7 @@ export const entries: Entry[] = [
     section: "Opinión",
     trope: "Falsa Equivalencia",
     flagged: true,
+    fragment: "Si aplicamos el derecho internacional con el mismo rasero, ambos bandos deberían sentarse en el banquillo de La Haya, sin distinciones morales.",
     excerpt:
       "La tribuna aplica estándares diferenciados del derecho internacional, creando una falsa equivalencia entre acciones de distinta naturaleza jurídica.",
   },
@@ -159,6 +169,7 @@ export const entries: Entry[] = [
     section: "Nacional",
     trope: "Conspiración",
     flagged: false,
+    fragment: "Varios diputados insinuaron que la posición del gobierno responde a presiones de lobbies extranjeros con una agenda propia que no coincide con el interés nacional.",
     excerpt:
       "La crónica insinúa influencias externas indebidas en la política exterior española, reproduciendo teorías conspirativas sobre lobbies sin evidencia documental.",
   },
@@ -171,6 +182,7 @@ export const entries: Entry[] = [
     section: "Fotografía",
     trope: "Deshumanización",
     flagged: true,
+    fragment: "Las imágenes seleccionadas muestran exclusivamente el sufrimiento de un lado, mientras el otro aparece representado únicamente por uniformes y maquinaria militar.",
     excerpt:
       "La selección editorial de imágenes presenta un sesgo sistemático en la humanización de las víctimas, aplicando criterios fotográficos asimétricos según el origen de las víctimas.",
   },
