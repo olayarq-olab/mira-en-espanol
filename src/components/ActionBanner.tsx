@@ -83,9 +83,9 @@ export default function ActionBanner({ selectedAuthors, selectedNewspapers }: Ac
         <div className="space-y-3 mt-4">
           {/* Author-level CTAs */}
           {hasAuthorFilter &&
-            selectedAuthors.map((author) => {
+            selectedAuthors.flatMap((author) => {
               const nps = authorNewspapers.get(author);
-              if (!nps) return null;
+              if (!nps) return [];
               return [...nps].map((newspaper) => (
                 <a
                   key={`author-${author}-${newspaper}`}
