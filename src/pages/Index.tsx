@@ -156,7 +156,7 @@ export default function Index() {
       </motion.div>
 
       {/* Action CTA when filtering by author */}
-      <ActionBanner selectedAuthors={selectedAuthors} />
+      <ActionBanner selectedAuthors={selectedAuthors} selectedNewspapers={selectedNewspapers} />
 
 
       {/* Pagination */}
