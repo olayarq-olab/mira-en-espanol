@@ -26,6 +26,7 @@ export interface Entry {
   trope: TropeType;
   flagged: boolean;
   excerpt: string;
+  fragment: string;
 }
 
 export const entries: Entry[] = [

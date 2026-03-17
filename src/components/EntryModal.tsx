@@ -82,6 +82,16 @@ export default function EntryModal({
               </div>
             )}
 
+            {/* Fragment */}
+            {entry.fragment && (
+              <div className="border-b border-foreground/10 p-8">
+                <p className="label-mono mb-3">Fragmento Citado</p>
+                <blockquote className="border-l-2 border-accent pl-4 italic text-base leading-relaxed max-w-[60ch] text-foreground/70">
+                  «{entry.fragment}»
+                </blockquote>
+              </div>
+            )}
+
             {/* Analysis */}
             <div className="p-8">
               <p className="label-mono mb-3">Análisis</p>
