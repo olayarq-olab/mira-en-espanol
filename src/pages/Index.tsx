@@ -85,6 +85,7 @@ export default function Index() {
 
   const handleNavigate = (page: "home" | "archive" | "stats" | "about" | "contact" | "antisemitism") => {
     if (page === "home") setShowHero(true);
+    if (page === "archive") setShowHero(false);
     if (page === "stats") navigate("/stats");
     if (page === "about") navigate("/about");
     if (page === "contact") navigate("/contact");
