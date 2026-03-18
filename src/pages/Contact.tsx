@@ -9,11 +9,12 @@ export default function Contact() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
 
-  const handleNavigate = (page: "home" | "archive" | "stats" | "about" | "contact") => {
+  const handleNavigate = (page: "home" | "archive" | "stats" | "about" | "contact" | "antisemitism") => {
     if (page === "home" || page === "archive") navigate("/");
     else if (page === "stats") navigate("/stats");
     else if (page === "about") navigate("/about");
     else if (page === "contact") navigate("/contact");
+    else if (page === "antisemitism") navigate("/antisemitismo");
   };
 
   const handleSubmit = (e: React.FormEvent) => {
