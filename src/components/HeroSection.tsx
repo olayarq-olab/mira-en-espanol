@@ -25,7 +25,7 @@ export default function HeroSection({ onEnter }: { onEnter: () => void }) {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <div className="flex-1 flex flex-col items-center justify-center px-6 py-24 max-w-4xl mx-auto text-center">
+      <div className="flex-1 flex flex-col items-center justify-center px-6 py-12 md:py-16 max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
