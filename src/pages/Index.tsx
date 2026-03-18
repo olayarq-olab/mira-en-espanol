@@ -27,7 +27,8 @@ const listContainer = {
 
 export default function Index() {
   const navigate = useNavigate();
-  const [showHero, setShowHero] = useState(true);
+  const [searchParams] = useSearchParams();
+  const [showHero, setShowHero] = useState(searchParams.get("view") !== "archive");
   const [selectedNewspapers, setSelectedNewspapers] = useState<Newspaper[]>([]);
   const [selectedTropes, setSelectedTropes] = useState<TropeType[]>([]);
   const [selectedAuthors, setSelectedAuthors] = useState<string[]>([]);
