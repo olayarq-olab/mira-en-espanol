@@ -12,6 +12,7 @@ import ActionBanner from "@/components/ActionBanner";
 import NewspaperCard from "@/components/NewspaperCard";
 import TropeCard from "@/components/TropeCard";
 import CartoonCarousel from "@/components/CartoonCarousel";
+import AuthorCard from "@/components/AuthorCard";
 import type { Entry } from "@/data/entries";
 
 type SortMode = "date-desc" | "date-asc" | "relevance";
@@ -152,6 +153,11 @@ export default function Index() {
       {/* Trope info card */}
       {selectedTropes.length === 1 && (
         <TropeCard trope={selectedTropes[0]} />
+      )}
+
+      {/* Author info card */}
+      {selectedAuthors.length === 1 && (
+        <AuthorCard author={selectedAuthors[0]} />
       )}
 
       {/* Entry list */}
