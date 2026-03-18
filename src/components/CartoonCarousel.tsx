@@ -6,12 +6,12 @@ import type { Newspaper } from "@/data/entries";
 import CartoonModal from "@/components/CartoonModal";
 
 interface CartoonCarouselProps {
-  newspaper: Newspaper;
+  newspaper?: Newspaper;
 }
 
 export default function CartoonCarousel({ newspaper }: CartoonCarouselProps) {
   const items = useMemo(
-    () => cartoons.filter((c) => c.newspaper === newspaper),
+    () => newspaper ? cartoons.filter((c) => c.newspaper === newspaper) : cartoons,
     [newspaper]
   );
   const scrollRef = useRef<HTMLDivElement>(null);
