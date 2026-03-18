@@ -103,6 +103,9 @@ export default function EntryModal({
             {/* Footer Actions */}
             <div className="border-t border-foreground/10 px-8 py-4 flex gap-6">
               <button className="label-mono hover:text-foreground transition-colors">
+                Link al artículo ↗
+              </button>
+              <button className="label-mono hover:text-foreground transition-colors">
                 Exportar PDF
               </button>
               <button className="label-mono hover:text-foreground transition-colors">
