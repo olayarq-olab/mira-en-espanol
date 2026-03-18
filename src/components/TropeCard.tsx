@@ -13,18 +13,24 @@ export default function TropeCard({ trope }: TropeCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 8 }}
+      initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-      className="border-b border-foreground/10 bg-muted/30"
+      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+      className="border-b-2 border-foreground/20 bg-muted/50 px-6 py-4"
     >
-      <div className="px-6 py-5 space-y-4">
-        <h3 className="font-display text-sm font-bold tracking-tight uppercase flex items-center gap-2">
+      <div className="border border-foreground/15 bg-background px-6 py-5 shadow-[0_2px_20px_-4px_hsl(var(--foreground)/0.08)]">
+        {/* Section label */}
+        <p className="label-mono text-center mb-3 tracking-[0.15em]">Ficha del Tropo</p>
+
+        {/* Header */}
+        <h2 className="font-display text-xl md:text-2xl font-black tracking-tight text-center mb-1 flex items-center justify-center gap-2">
           <span className="text-accent">■</span>
           {meta.name}
-        </h3>
+        </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <hr className="border-foreground/15 my-5 max-w-[120px] mx-auto" />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-1.5">
             <div className="flex items-center gap-1.5 text-muted-foreground">
               <BookOpen className="h-3 w-3" />
