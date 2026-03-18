@@ -28,7 +28,7 @@ export default function TropeCard({ trope }: TropeCardProps) {
           {meta.name}
         </h2>
 
-        <hr className="border-foreground/15 my-5 max-w-[120px] mx-auto" />
+        <hr className="border-foreground/15 my-5 max-w-[120px]" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-1.5">
