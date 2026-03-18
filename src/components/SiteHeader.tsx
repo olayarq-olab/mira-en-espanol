@@ -19,6 +19,18 @@ export default function SiteHeader({ onNavigate, currentPage = "archive" }: Site
       </div>
       <nav className="flex gap-6">
         <button
+          onClick={() => onNavigate?.("about")}
+          className={`label-mono transition-colors ${currentPage === "about" ? "text-foreground" : "hover:text-foreground"}`}
+        >
+          Sobre nosotros
+        </button>
+        <button
+          onClick={() => onNavigate?.("antisemitism")}
+          className={`label-mono transition-colors ${currentPage === "antisemitism" ? "text-foreground" : "hover:text-foreground"}`}
+        >
+          Antisemitismo
+        </button>
+        <button
           onClick={() => onNavigate?.("archive")}
           className={`label-mono transition-colors ${currentPage === "archive" ? "text-foreground" : "hover:text-foreground"}`}
         >
@@ -29,18 +41,6 @@ export default function SiteHeader({ onNavigate, currentPage = "archive" }: Site
           className={`label-mono transition-colors ${currentPage === "stats" ? "text-foreground" : "hover:text-foreground"}`}
         >
           Estadísticas
-        </button>
-        <button
-          onClick={() => onNavigate?.("antisemitism")}
-          className={`label-mono transition-colors ${currentPage === "antisemitism" ? "text-foreground" : "hover:text-foreground"}`}
-        >
-          Antisemitismo
-        </button>
-        <button
-          onClick={() => onNavigate?.("about")}
-          className={`label-mono transition-colors ${currentPage === "about" ? "text-foreground" : "hover:text-foreground"}`}
-        >
-          Sobre nosotros
         </button>
         <button
           onClick={() => onNavigate?.("contact")}
