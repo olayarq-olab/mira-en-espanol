@@ -10,6 +10,7 @@ export interface NewspaperMeta {
   empresaMatriz: string;
   accionistaMayoritario: string;
   corporateContact?: { email?: string; phone?: string };
+  logoUrl?: string;
 }
 
 export const newspaperMeta: Record<Newspaper, NewspaperMeta> = {
