@@ -1,6 +1,6 @@
 interface SiteHeaderProps {
-  onNavigate?: (page: "home" | "archive" | "stats" | "about") => void;
-  currentPage?: "archive" | "stats" | "about";
+  onNavigate?: (page: "home" | "archive" | "stats" | "about" | "contact") => void;
+  currentPage?: "archive" | "stats" | "about" | "contact";
 }
 
 export default function SiteHeader({ onNavigate, currentPage = "archive" }: SiteHeaderProps) {
@@ -41,6 +41,14 @@ export default function SiteHeader({ onNavigate, currentPage = "archive" }: Site
           }`}
         >
           Sobre nosotros
+        </button>
+        <button
+          onClick={() => onNavigate?.("contact")}
+          className={`label-mono transition-colors ${
+            currentPage === "contact" ? "text-foreground" : "hover:text-foreground"
+          }`}
+        >
+          Contacto
         </button>
       </nav>
     </header>
