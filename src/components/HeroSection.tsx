@@ -59,7 +59,7 @@ export default function HeroSection({ onEnter }: {onEnter: () => void;}) {
           variants={container}
           initial="hidden"
           animate="show"
-          className="grid grid-cols-3 gap-8 md:gap-16 mt-8 border-t border-b border-foreground/10 py-8 w-full max-w-xl">
+          className="grid grid-cols-3 gap-8 md:gap-16 mt-4 border-t border-b border-foreground/10 py-8 w-full max-w-xl">
           
           {[
           { value: stats.media, label: "Medios analizados" },
