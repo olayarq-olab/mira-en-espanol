@@ -6,6 +6,7 @@ export default function SiteFooter() {
   const links = [
     { label: "Archivo", path: "/" },
     { label: "Estadísticas", path: "/stats" },
+    { label: "Antisemitismo", path: "/antisemitismo" },
     { label: "Sobre nosotros", path: "/about" },
     { label: "Contacto", path: "/contact" },
   ];
