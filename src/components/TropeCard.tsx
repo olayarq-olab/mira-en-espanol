@@ -18,7 +18,7 @@ export default function TropeCard({ trope }: TropeCardProps) {
       transition={{ duration: 0.3 }}
       className="border-b border-foreground/10 bg-muted/30"
     >
-      <div className="px-6 py-5 max-w-4xl space-y-4">
+      <div className="px-6 py-5 space-y-4">
         <h3 className="font-display text-sm font-bold tracking-tight uppercase flex items-center gap-2">
           <span className="text-accent">■</span>
           {meta.name}
