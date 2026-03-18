@@ -16,81 +16,67 @@ export default function NewspaperCard({ newspaper }: NewspaperCardProps) {
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      className="border-b-2 border-foreground/15 bg-muted/40 px-6 py-7 shadow-[inset_0_-1px_0_hsl(var(--foreground)/0.05)]"
+      className="border-b border-foreground/10 bg-muted/30 px-6 py-6"
     >
-      <div className="max-w-6xl mx-auto">
-        {/* Header with logo */}
-        <div className="flex items-center justify-center gap-4 mb-6">
-          {meta.logoUrl && (
-            <img
-              src={meta.logoUrl}
-              alt={`Logo de ${newspaper}`}
-              className="h-8 md:h-10 w-auto object-contain dark:invert"
-            />
-          )}
-          <h2 className="font-display text-2xl md:text-3xl font-black tracking-tight">
-            {newspaper}
-          </h2>
-        </div>
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <h2 className="font-display text-2xl md:text-3xl font-black tracking-tight text-center mb-6">
+          {newspaper}
+        </h2>
 
-        {/* Content grid — wider layout */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 items-start">
-          {/* Staff */}
-          <div className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-3">
-            {meta.staff.map((s) => (
-              <div key={s.role} className="text-center md:text-left">
-                <p className="label-mono text-muted-foreground">{s.role}</p>
-                <p className="font-display text-sm font-bold mt-0.5">{s.name}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Divider */}
-          <div className="hidden md:block w-px bg-foreground/10 self-stretch" />
-
-          {/* Corporate + Contact */}
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-wrap justify-center md:justify-end gap-x-10 gap-y-3">
-              <div className="text-center md:text-right">
-                <div className="flex items-center justify-center md:justify-end gap-1.5 mb-1">
-                  <Building2 className="h-3.5 w-3.5 text-muted-foreground" />
-                  <span className="label-mono text-muted-foreground">Empresa Matriz</span>
-                </div>
-                <p className="font-display text-sm font-bold">{meta.empresaMatriz}</p>
-              </div>
-              <div className="text-center md:text-right">
-                <div className="flex items-center justify-center md:justify-end gap-1.5 mb-1">
-                  <Users className="h-3.5 w-3.5 text-muted-foreground" />
-                  <span className="label-mono text-muted-foreground">Accionista Mayoritario</span>
-                </div>
-                <p className="font-display text-sm font-bold">{meta.accionistaMayoritario}</p>
-              </div>
+        {/* Staff grid */}
+        <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-6">
+          {meta.staff.map((s) => (
+            <div key={s.role} className="text-center">
+              <p className="label-mono text-muted-foreground">{s.role}</p>
+              <p className="font-display text-sm font-bold mt-0.5">{s.name}</p>
             </div>
+          ))}
+        </div>
 
-            {meta.corporateContact && (
-              <div className="text-center md:text-right space-y-1">
-                <p className="label-mono text-muted-foreground">Corporate Affairs</p>
-                <div className="flex items-center justify-center md:justify-end gap-4 text-xs font-mono-ui">
-                  {meta.corporateContact.email && (
-                    <a
-                      href={`mailto:${meta.corporateContact.email}`}
-                      className="flex items-center gap-1 text-accent hover:underline"
-                    >
-                      <Mail className="h-3 w-3" />
-                      {meta.corporateContact.email}
-                    </a>
-                  )}
-                  {meta.corporateContact.phone && (
-                    <span className="flex items-center gap-1 text-muted-foreground">
-                      <Phone className="h-3 w-3" />
-                      {meta.corporateContact.phone}
-                    </span>
-                  )}
-                </div>
-              </div>
-            )}
+        <hr className="border-foreground/10 mb-6 max-w-xs mx-auto" />
+
+        {/* Corporate info */}
+        <div className="flex flex-wrap justify-center gap-x-12 gap-y-4">
+          <div className="text-center">
+            <div className="flex items-center justify-center gap-1.5 mb-1">
+              <Building2 className="h-3.5 w-3.5 text-muted-foreground" />
+              <span className="label-mono text-muted-foreground">Empresa Matriz</span>
+            </div>
+            <p className="font-display text-sm font-bold">{meta.empresaMatriz}</p>
+          </div>
+          <div className="text-center">
+            <div className="flex items-center justify-center gap-1.5 mb-1">
+              <Users className="h-3.5 w-3.5 text-muted-foreground" />
+              <span className="label-mono text-muted-foreground">Accionista Mayoritario</span>
+            </div>
+            <p className="font-display text-sm font-bold">{meta.accionistaMayoritario}</p>
           </div>
         </div>
+
+        {/* Contact info */}
+        {meta.corporateContact && (
+          <div className="mt-5 text-center space-y-1">
+            <p className="label-mono text-muted-foreground">Corporate Affairs</p>
+            <div className="flex items-center justify-center gap-4 text-xs font-mono-ui">
+              {meta.corporateContact.email && (
+                <a
+                  href={`mailto:${meta.corporateContact.email}`}
+                  className="flex items-center gap-1 text-accent hover:underline"
+                >
+                  <Mail className="h-3 w-3" />
+                  {meta.corporateContact.email}
+                </a>
+              )}
+              {meta.corporateContact.phone && (
+                <span className="flex items-center gap-1 text-muted-foreground">
+                  <Phone className="h-3 w-3" />
+                  {meta.corporateContact.phone}
+                </span>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </motion.div>
   );
