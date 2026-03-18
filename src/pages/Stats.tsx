@@ -30,7 +30,8 @@ export default function Stats() {
   const navigate = useNavigate();
 
   const handleNavigate = (page: "home" | "archive" | "stats" | "about" | "contact" | "antisemitism") => {
-    if (page === "home" || page === "archive") navigate("/");
+    if (page === "home") navigate("/");
+    else if (page === "archive") navigate("/?view=archive");
     else if (page === "about") navigate("/about");
     else if (page === "contact") navigate("/contact");
     else if (page === "antisemitism") navigate("/antisemitismo");

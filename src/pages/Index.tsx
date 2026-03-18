@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { entries, type Newspaper, type TropeType } from "@/data/entries";
 import SiteHeader from "@/components/SiteHeader";
