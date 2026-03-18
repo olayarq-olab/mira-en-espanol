@@ -9,6 +9,7 @@ import EntryModal from "@/components/EntryModal";
 import HeroSection from "@/components/HeroSection";
 import ActionBanner from "@/components/ActionBanner";
 import NewspaperCard from "@/components/NewspaperCard";
+import TropeCard from "@/components/TropeCard";
 import type { Entry } from "@/data/entries";
 
 type SortMode = "date-desc" | "date-asc" | "relevance";
