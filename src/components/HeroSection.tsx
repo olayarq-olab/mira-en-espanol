@@ -67,7 +67,7 @@ export default function HeroSection({ onEnter }: {onEnter: () => void;}) {
           { value: stats.authors, label: "Autores identificados" }].
           map((stat) =>
           <motion.div key={stat.label} variants={counter} className="flex flex-col items-center">
-              <span className="font-display text-4xl md:text-5xl font-bold">{stat.value}</span>
+              <span className="font-display md:text-5xl font-bold text-4xl">{stat.value}</span>
               <span className="label-mono mt-2 text-center">{stat.label}</span>
             </motion.div>
           )}
