@@ -174,6 +174,11 @@ export default function Index() {
         )}
       </motion.div>
 
+      {/* Cartoon carousel when filtering by single newspaper */}
+      {selectedNewspapers.length === 1 && (
+        <CartoonCarousel newspaper={selectedNewspapers[0]} />
+      )}
+
       {/* Action CTA when filtering by author */}
       <ActionBanner selectedAuthors={selectedAuthors} selectedNewspapers={selectedNewspapers} />
 
