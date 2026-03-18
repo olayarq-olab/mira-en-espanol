@@ -20,10 +20,10 @@ export default function TropeCard({ trope }: TropeCardProps) {
     >
       <div className="border border-foreground/15 bg-background px-6 py-5 shadow-[0_2px_20px_-4px_hsl(var(--foreground)/0.08)]">
         {/* Section label */}
-        <p className="label-mono text-center mb-3 tracking-[0.15em]">Ficha del Tropo</p>
+        <p className="label-mono mb-3 tracking-[0.15em]">Ficha del Tropo</p>
 
         {/* Header */}
-        <h2 className="font-display text-xl md:text-2xl font-black tracking-tight text-center mb-1 flex items-center justify-center gap-2">
+        <h2 className="font-display text-xl md:text-2xl font-black tracking-tight mb-1 flex items-center gap-2">
           <span className="text-accent">■</span>
           {meta.name}
         </h2>
