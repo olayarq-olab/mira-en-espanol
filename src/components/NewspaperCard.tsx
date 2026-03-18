@@ -16,13 +16,18 @@ export default function NewspaperCard({ newspaper }: NewspaperCardProps) {
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      className="border-b border-foreground/10 bg-muted/30 px-6 py-6"
+      className="border-b-2 border-foreground/20 bg-muted/50 px-6 py-8"
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto border border-foreground/15 bg-background p-6 md:p-8 shadow-[0_2px_20px_-4px_hsl(var(--foreground)/0.08)]">
+        {/* Section label */}
+        <p className="label-mono text-center mb-4 tracking-[0.15em]">Ficha del Medio</p>
+
         {/* Header */}
-        <h2 className="font-display text-2xl md:text-3xl font-black tracking-tight text-center mb-6">
+        <h2 className="font-display text-2xl md:text-3xl font-black tracking-tight text-center mb-1">
           {newspaper}
         </h2>
+
+        <hr className="border-foreground/15 my-5 max-w-[120px] mx-auto" />
 
         {/* Staff grid */}
         <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-6">
