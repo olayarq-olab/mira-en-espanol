@@ -155,6 +155,11 @@ export default function Index() {
         <TropeCard trope={selectedTropes[0]} />
       )}
 
+      {/* Author info card */}
+      {selectedAuthors.length === 1 && (
+        <AuthorCard author={selectedAuthors[0]} />
+      )}
+
       {/* Entry list */}
       <motion.div
         key={`${selectedNewspapers.join()}-${selectedTropes.join()}-${selectedAuthors.join()}-${sortMode}-${page}`}
