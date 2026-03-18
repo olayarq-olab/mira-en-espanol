@@ -25,9 +25,16 @@ export default function AuthorCard({ author }: AuthorCardProps) {
       <div className="border border-foreground/15 bg-background px-6 py-5 shadow-[0_2px_20px_-4px_hsl(var(--foreground)/0.08)]">
         <p className="label-mono mb-3 tracking-[0.15em]">Ficha del Autor</p>
 
-        <h2 className="font-display text-xl md:text-2xl font-black tracking-tight mb-1">
-          {author}
-        </h2>
+        <div className="flex items-center gap-4 mb-1">
+          <Avatar className="h-12 w-12 border border-foreground/10">
+            <AvatarFallback className="font-display font-bold text-sm bg-muted text-foreground">
+              {author.split(" ").map(w => w[0]).filter(Boolean).slice(0, 2).join("").toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
+          <h2 className="font-display text-xl md:text-2xl font-black tracking-tight">
+            {author}
+          </h2>
+        </div>
 
         <hr className="border-foreground/15 my-5 max-w-[120px]" />
 
