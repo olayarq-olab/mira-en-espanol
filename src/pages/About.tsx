@@ -7,7 +7,8 @@ export default function About() {
   const navigate = useNavigate();
 
   const handleNavigate = (page: "home" | "archive" | "stats" | "about" | "contact" | "antisemitism") => {
-    if (page === "home" || page === "archive") navigate("/");
+    if (page === "home") navigate("/");
+    if (page === "archive") navigate("/?view=archive");
     if (page === "stats") navigate("/stats");
     if (page === "about") navigate("/about");
     if (page === "contact") navigate("/contact");

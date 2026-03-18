@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { entries, type Newspaper, type TropeType } from "@/data/entries";
 import SiteHeader from "@/components/SiteHeader";
@@ -27,7 +27,8 @@ const listContainer = {
 
 export default function Index() {
   const navigate = useNavigate();
-  const [showHero, setShowHero] = useState(true);
+  const [searchParams] = useSearchParams();
+  const [showHero, setShowHero] = useState(searchParams.get("view") !== "archive");
   const [selectedNewspapers, setSelectedNewspapers] = useState<Newspaper[]>([]);
   const [selectedTropes, setSelectedTropes] = useState<TropeType[]>([]);
   const [selectedAuthors, setSelectedAuthors] = useState<string[]>([]);
