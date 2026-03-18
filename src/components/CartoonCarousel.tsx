@@ -43,7 +43,7 @@ export default function CartoonCarousel({ newspaper }: CartoonCarouselProps) {
               Viñetas y caricaturas
             </h2>
             <p className="label-mono mt-1">
-              Ilustraciones editoriales publicadas en {newspaper}
+            Ilustraciones editoriales{newspaper ? ` publicadas en ${newspaper}` : " en medios españoles"}
             </p>
           </div>
           <div className="flex gap-2">
