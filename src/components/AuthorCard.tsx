@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { FileText, Newspaper } from "lucide-react";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { entries } from "@/data/entries";
 
 interface AuthorCardProps {
