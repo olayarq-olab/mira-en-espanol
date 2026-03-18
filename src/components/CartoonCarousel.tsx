@@ -6,12 +6,12 @@ import type { Newspaper } from "@/data/entries";
 import CartoonModal from "@/components/CartoonModal";
 
 interface CartoonCarouselProps {
-  newspaper: Newspaper;
+  newspaper?: Newspaper;
 }
 
 export default function CartoonCarousel({ newspaper }: CartoonCarouselProps) {
   const items = useMemo(
-    () => cartoons.filter((c) => c.newspaper === newspaper),
+    () => newspaper ? cartoons.filter((c) => c.newspaper === newspaper) : cartoons,
     [newspaper]
   );
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -43,7 +43,7 @@ export default function CartoonCarousel({ newspaper }: CartoonCarouselProps) {
               Viñetas y caricaturas
             </h2>
             <p className="label-mono mt-1">
-              Ilustraciones editoriales publicadas en {newspaper}
+            Ilustraciones editoriales{newspaper ? ` publicadas en ${newspaper}` : " en medios españoles"}
             </p>
           </div>
           <div className="flex gap-2">
