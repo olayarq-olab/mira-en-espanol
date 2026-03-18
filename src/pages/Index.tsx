@@ -12,6 +12,7 @@ import ActionBanner from "@/components/ActionBanner";
 import NewspaperCard from "@/components/NewspaperCard";
 import TropeCard from "@/components/TropeCard";
 import CartoonCarousel from "@/components/CartoonCarousel";
+import AuthorCard from "@/components/AuthorCard";
 import type { Entry } from "@/data/entries";
 
 type SortMode = "date-desc" | "date-asc" | "relevance";
