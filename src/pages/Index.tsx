@@ -11,6 +11,7 @@ import HeroSection from "@/components/HeroSection";
 import ActionBanner from "@/components/ActionBanner";
 import NewspaperCard from "@/components/NewspaperCard";
 import TropeCard from "@/components/TropeCard";
+import CartoonCarousel from "@/components/CartoonCarousel";
 import type { Entry } from "@/data/entries";
 
 type SortMode = "date-desc" | "date-asc" | "relevance";
@@ -172,6 +173,11 @@ export default function Index() {
           ))
         )}
       </motion.div>
+
+      {/* Cartoon carousel when filtering by single newspaper */}
+      {selectedNewspapers.length === 1 && (
+        <CartoonCarousel newspaper={selectedNewspapers[0]} />
+      )}
 
       {/* Action CTA when filtering by author */}
       <ActionBanner selectedAuthors={selectedAuthors} selectedNewspapers={selectedNewspapers} />
