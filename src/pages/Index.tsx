@@ -83,11 +83,12 @@ export default function Index() {
     setPage(1);
   };
 
-  const handleNavigate = (page: "home" | "archive" | "stats" | "about" | "contact") => {
+  const handleNavigate = (page: "home" | "archive" | "stats" | "about" | "contact" | "antisemitism") => {
     if (page === "home") setShowHero(true);
     if (page === "stats") navigate("/stats");
     if (page === "about") navigate("/about");
     if (page === "contact") navigate("/contact");
+    if (page === "antisemitism") navigate("/antisemitismo");
   };
 
   if (showHero) {
