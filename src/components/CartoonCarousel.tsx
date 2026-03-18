@@ -21,11 +21,16 @@ export default function CartoonCarousel({ newspaper }: CartoonCarouselProps) {
 
   const scroll = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
+    const el = scrollRef.current;
     const amount = 320;
-    scrollRef.current.scrollBy({
-      left: dir === "left" ? -amount : amount,
-      behavior: "smooth",
-    });
+
+    if (dir === "right" && el.scrollLeft + el.clientWidth >= el.scrollWidth - 10) {
+      el.scrollTo({ left: 0, behavior: "smooth" });
+    } else if (dir === "left" && el.scrollLeft <= 10) {
+      el.scrollTo({ left: el.scrollWidth, behavior: "smooth" });
+    } else {
+      el.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
+    }
   };
 
   return (
