@@ -16,9 +16,9 @@ export default function NewspaperCard({ newspaper }: NewspaperCardProps) {
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      className="border-b-2 border-foreground/20 bg-muted/50 px-6 py-8"
+      className="border-b-2 border-foreground/20 bg-muted/50 px-6 py-4"
     >
-      <div className="max-w-4xl mx-auto border border-foreground/15 bg-background p-6 md:p-8 shadow-[0_2px_20px_-4px_hsl(var(--foreground)/0.08)]">
+      <div className="border border-foreground/15 bg-background px-6 py-4 shadow-[0_2px_20px_-4px_hsl(var(--foreground)/0.08)]">
         {/* Section label */}
         <p className="label-mono text-center mb-4 tracking-[0.15em]">Ficha del Medio</p>
 
