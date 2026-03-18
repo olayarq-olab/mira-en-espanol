@@ -34,6 +34,14 @@ export default function SiteHeader({ onNavigate, currentPage = "archive" }: Site
         >
           Estadísticas
         </button>
+        <button
+          onClick={() => onNavigate?.("about")}
+          className={`label-mono transition-colors ${
+            currentPage === "about" ? "text-foreground" : "hover:text-foreground"
+          }`}
+        >
+          Sobre nosotros
+        </button>
       </nav>
     </header>
   );
