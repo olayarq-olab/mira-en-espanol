@@ -143,6 +143,11 @@ export default function Index() {
         <NewspaperCard newspaper={selectedNewspapers[0]} />
       )}
 
+      {/* Trope info card */}
+      {selectedTropes.length === 1 && (
+        <TropeCard trope={selectedTropes[0]} />
+      )}
+
       {/* Entry list */}
       <motion.div
         key={`${selectedNewspapers.join()}-${selectedTropes.join()}-${selectedAuthors.join()}-${sortMode}-${page}`}
