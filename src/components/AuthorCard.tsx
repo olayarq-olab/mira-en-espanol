@@ -1,8 +1,9 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { FileText, Newspaper } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { entries } from "@/data/entries";
+import { authorAvatars } from "@/data/authorAvatars";
 
 interface AuthorCardProps {
   author: string;
@@ -14,6 +15,8 @@ export default function AuthorCard({ author }: AuthorCardProps) {
     const newspapers = [...new Set(authorEntries.map((e) => e.newspaper))];
     return { count: authorEntries.length, newspapers };
   }, [author]);
+
+  const avatarSrc = authorAvatars[author];
 
   return (
     <motion.div
@@ -27,6 +30,9 @@ export default function AuthorCard({ author }: AuthorCardProps) {
 
         <div className="flex items-center gap-4 mb-1">
           <Avatar className="h-12 w-12 border border-foreground/10">
+            {avatarSrc ? (
+              <AvatarImage src={avatarSrc} alt={author} className="object-cover" />
+            ) : null}
             <AvatarFallback className="font-display font-bold text-sm bg-muted text-foreground">
               {author.split(" ").map(w => w[0]).filter(Boolean).slice(0, 2).join("").toUpperCase()}
             </AvatarFallback>
