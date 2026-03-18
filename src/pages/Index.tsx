@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { entries, type Newspaper, type TropeType } from "@/data/entries";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import FilterBar from "@/components/FilterBar";
 import EntryRow from "@/components/EntryRow";
 import EntryModal from "@/components/EntryModal";
@@ -82,10 +83,11 @@ export default function Index() {
     setPage(1);
   };
 
-  const handleNavigate = (page: "home" | "archive" | "stats" | "about") => {
+  const handleNavigate = (page: "home" | "archive" | "stats" | "about" | "contact") => {
     if (page === "home") setShowHero(true);
     if (page === "stats") navigate("/stats");
     if (page === "about") navigate("/about");
+    if (page === "contact") navigate("/contact");
   };
 
   if (showHero) {
@@ -171,7 +173,6 @@ export default function Index() {
       {/* Action CTA when filtering by author */}
       <ActionBanner selectedAuthors={selectedAuthors} selectedNewspapers={selectedNewspapers} />
 
-
       {/* Pagination */}
       {totalPages > 1 && (
         <div className="border-t border-foreground/10 px-6 py-3 flex items-center justify-between">
@@ -192,6 +193,8 @@ export default function Index() {
           </button>
         </div>
       )}
+
+      <SiteFooter />
 
       <EntryModal entry={selectedEntry} onClose={() => setSelectedEntry(null)} />
     </div>

@@ -14,6 +14,7 @@ import {
 } from "recharts";
 import { entries, newspapers, tropeTypes } from "@/data/entries";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 
 const COLORS = [
   "hsl(0, 72%, 45%)",
@@ -27,6 +28,12 @@ const COLORS = [
 
 export default function Stats() {
   const navigate = useNavigate();
+
+  const handleNavigate = (page: "home" | "archive" | "stats" | "about" | "contact") => {
+    if (page === "home" || page === "archive") navigate("/");
+    else if (page === "about") navigate("/about");
+    else if (page === "contact") navigate("/contact");
+  };
 
   const byNewspaper = useMemo(
     () =>
@@ -74,7 +81,7 @@ export default function Stats() {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <SiteHeader onNavigate={(page) => { if (page === "home" || page === "archive") navigate("/"); else if (page === "about") navigate("/about"); }} currentPage="stats" />
+      <SiteHeader onNavigate={handleNavigate} currentPage="stats" />
 
       <div className="flex-1 overflow-y-auto">
         {/* Header */}
@@ -242,6 +249,8 @@ export default function Stats() {
           </section>
         </div>
       </div>
+
+      <SiteFooter />
     </div>
   );
 }
