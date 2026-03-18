@@ -136,6 +136,11 @@ export default function Index() {
         </div>
       </div>
 
+      {/* Newspaper info card */}
+      {selectedNewspapers.length === 1 && selectedAuthors.length === 0 && (
+        <NewspaperCard newspaper={selectedNewspapers[0]} />
+      )}
+
       {/* Entry list */}
       <motion.div
         key={`${selectedNewspapers.join()}-${selectedTropes.join()}-${selectedAuthors.join()}-${sortMode}-${page}`}
