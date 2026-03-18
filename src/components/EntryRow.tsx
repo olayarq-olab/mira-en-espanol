@@ -38,8 +38,8 @@ export default function EntryRow({
       </div>
 
       {/* Newspaper */}
-      <div className="shrink-0 w-36">
-        <span className="font-display text-base font-bold">{entry.newspaper}</span>
+      <div className="shrink-0 w-40">
+        <span className="font-display text-base font-black uppercase tracking-tight bg-primary text-primary-foreground px-2 py-0.5 inline-block text-sm">{entry.newspaper}</span>
       </div>
 
       {/* Title + Excerpt */}
