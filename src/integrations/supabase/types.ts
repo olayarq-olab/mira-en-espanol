@@ -14,16 +14,140 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      cases: {
+        Row: {
+          analysis: string
+          author: string | null
+          created_at: string
+          date: string
+          excerpt: string
+          flagged: boolean
+          fragment: string | null
+          id: string
+          image_caption: string | null
+          image_url: string | null
+          newspaper: string
+          section: string | null
+          source_url: string | null
+          title: string
+          trope: Database["public"]["Enums"]["trope_type"]
+          updated_at: string
+        }
+        Insert: {
+          analysis: string
+          author?: string | null
+          created_at?: string
+          date: string
+          excerpt: string
+          flagged?: boolean
+          fragment?: string | null
+          id?: string
+          image_caption?: string | null
+          image_url?: string | null
+          newspaper: string
+          section?: string | null
+          source_url?: string | null
+          title: string
+          trope: Database["public"]["Enums"]["trope_type"]
+          updated_at?: string
+        }
+        Update: {
+          analysis?: string
+          author?: string | null
+          created_at?: string
+          date?: string
+          excerpt?: string
+          flagged?: boolean
+          fragment?: string | null
+          id?: string
+          image_caption?: string | null
+          image_url?: string | null
+          newspaper?: string
+          section?: string | null
+          source_url?: string | null
+          title?: string
+          trope?: Database["public"]["Enums"]["trope_type"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      editorial_articles: {
+        Row: {
+          author: string
+          content: string
+          cover_image_url: string | null
+          created_at: string
+          date: string
+          id: string
+          published: boolean
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author: string
+          content: string
+          cover_image_url?: string | null
+          created_at?: string
+          date: string
+          id?: string
+          published?: boolean
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author?: string
+          content?: string
+          cover_image_url?: string | null
+          created_at?: string
+          date?: string
+          id?: string
+          published?: boolean
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "editor"
+      trope_type:
+        | "Doble Lealtad"
+        | "Deshumanización"
+        | "Conspiración"
+        | "Negación"
+        | "Falsa Equivalencia"
+        | "Demonización"
+        | "Estereotipo Económico"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +274,17 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "editor"],
+      trope_type: [
+        "Doble Lealtad",
+        "Deshumanización",
+        "Conspiración",
+        "Negación",
+        "Falsa Equivalencia",
+        "Demonización",
+        "Estereotipo Económico",
+      ],
+    },
   },
 } as const
