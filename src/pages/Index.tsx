@@ -1,7 +1,9 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { entries, type Newspaper, type TropeType } from "@/data/entries";
+import { supabase } from "@/integrations/supabase/client";
+import type { Newspaper, TropeType } from "@/data/entries";
+import { newspapers, tropeTypes } from "@/data/entries";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import FilterBar from "@/components/FilterBar";
@@ -14,18 +16,31 @@ import TropeCard from "@/components/TropeCard";
 import CartoonCarousel from "@/components/CartoonCarousel";
 import AuthorCard from "@/components/AuthorCard";
 import type { Entry } from "@/data/entries";
+import type { Tables } from "@/integrations/supabase/types";
 
 type SortMode = "date-desc" | "date-asc" | "relevance";
-
 const ITEMS_PER_PAGE = 8;
 
 const listContainer = {
   hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.05 },
-  },
+  show: { opacity: 1, transition: { staggerChildren: 0.05 } },
 };
+
+// Map DB row to Entry type used by existing components
+function mapCaseToEntry(c: Tables<"cases">): Entry {
+  return {
+    id: c.id,
+    newspaper: c.newspaper as Newspaper,
+    date: c.date,
+    title: c.title,
+    author: c.author ?? "Redacción",
+    section: c.section ?? "",
+    trope: c.trope as TropeType,
+    flagged: c.flagged,
+    excerpt: c.excerpt,
+    fragment: c.fragment ?? "",
+  };
+}
 
 export default function Index() {
   const navigate = useNavigate();
@@ -38,9 +53,28 @@ export default function Index() {
   const [selectedEntry, setSelectedEntry] = useState<Entry | null>(null);
   const [page, setPage] = useState(1);
 
+  const [entries, setEntries] = useState<Entry[]>([]);
+  const [dbLoading, setDbLoading] = useState(true);
+
+  // Load cases from database
+  useEffect(() => {
+    const load = async () => {
+      const { data } = await supabase.from("cases").select("*").order("date", { ascending: false });
+      if (data && data.length > 0) {
+        setEntries(data.map(mapCaseToEntry));
+      } else {
+        // Fallback to static data if DB is empty
+        const { entries: staticEntries } = await import("@/data/entries");
+        setEntries(staticEntries);
+      }
+      setDbLoading(false);
+    };
+    load();
+  }, []);
+
   const allAuthors = useMemo(() => {
     return [...new Set(entries.map((e) => e.author))].sort();
-  }, []);
+  }, [entries]);
 
   const filtered = useMemo(() => {
     let result = entries.filter((e) => {
@@ -62,7 +96,7 @@ export default function Index() {
     }
 
     return result;
-  }, [selectedNewspapers, selectedTropes, selectedAuthors, sortMode]);
+  }, [entries, selectedNewspapers, selectedTropes, selectedAuthors, sortMode]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
   const paginated = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
@@ -103,7 +137,6 @@ export default function Index() {
     <div className="min-h-screen flex flex-col bg-background">
       <SiteHeader onNavigate={handleNavigate} currentPage="archive" />
 
-      {/* Compact filter bar */}
       <FilterBar
         selectedNewspapers={selectedNewspapers}
         selectedTropes={selectedTropes}
@@ -117,7 +150,6 @@ export default function Index() {
         filteredCount={filtered.length}
       />
 
-      {/* Sort + pagination header */}
       <div className="border-b border-foreground/10 px-6 py-2 flex items-center justify-between gap-4">
         <span className="label-mono">Últimas Entradas</span>
         <div className="flex items-center gap-4">
@@ -145,22 +177,12 @@ export default function Index() {
         </div>
       </div>
 
-      {/* Newspaper info card */}
       {selectedNewspapers.length === 1 && selectedAuthors.length === 0 && (
         <NewspaperCard newspaper={selectedNewspapers[0]} />
       )}
+      {selectedTropes.length === 1 && <TropeCard trope={selectedTropes[0]} />}
+      {selectedAuthors.length === 1 && <AuthorCard author={selectedAuthors[0]} />}
 
-      {/* Trope info card */}
-      {selectedTropes.length === 1 && (
-        <TropeCard trope={selectedTropes[0]} />
-      )}
-
-      {/* Author info card */}
-      {selectedAuthors.length === 1 && (
-        <AuthorCard author={selectedAuthors[0]} />
-      )}
-
-      {/* Entry list */}
       <motion.div
         key={`${selectedNewspapers.join()}-${selectedTropes.join()}-${selectedAuthors.join()}-${sortMode}-${page}`}
         variants={listContainer}
@@ -168,7 +190,9 @@ export default function Index() {
         animate="show"
         className="flex-1 overflow-y-auto"
       >
-        {paginated.length === 0 ? (
+        {dbLoading ? (
+          <div className="p-8 text-center"><span className="label-mono">Cargando...</span></div>
+        ) : paginated.length === 0 ? (
           <div className="p-8 text-center text-muted-foreground">
             <p className="label-mono">Sin resultados</p>
             <p className="text-sm mt-2">No se encontraron entradas con los filtros seleccionados.</p>
@@ -180,17 +204,14 @@ export default function Index() {
         )}
       </motion.div>
 
-      {/* Cartoon carousel */}
       {selectedNewspapers.length === 1 ? (
         <CartoonCarousel newspaper={selectedNewspapers[0]} />
       ) : (
         <CartoonCarousel />
       )}
 
-      {/* Action CTA when filtering by author */}
       <ActionBanner selectedAuthors={selectedAuthors} selectedNewspapers={selectedNewspapers} />
 
-      {/* Pagination */}
       {totalPages > 1 && (
         <div className="border-t border-foreground/10 px-6 py-3 flex items-center justify-between">
           <button
@@ -212,7 +233,6 @@ export default function Index() {
       )}
 
       <SiteFooter />
-
       <EntryModal entry={selectedEntry} onClose={() => setSelectedEntry(null)} />
     </div>
   );
