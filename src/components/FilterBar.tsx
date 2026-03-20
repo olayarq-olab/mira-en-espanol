@@ -41,7 +41,7 @@ function FilterDropdown({
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center gap-1.5 border px-3 py-1.5 text-xs font-mono-ui uppercase transition-colors duration-150 ${
+        className={`flex items-center gap-1.5 border px-2.5 sm:px-3 py-1.5 text-[10px] sm:text-xs font-mono-ui uppercase transition-colors duration-150 ${
           selected.length > 0
             ? "bg-primary text-primary-foreground border-primary"
             : "border-foreground/20 text-foreground hover:bg-muted"
