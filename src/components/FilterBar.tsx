@@ -106,9 +106,9 @@ export default function FilterBar({
     selectedAuthors.length > 0;
 
   return (
-    <div className="border-b border-foreground/10 px-6 py-3">
-      <div className="flex items-center gap-3 flex-wrap">
-        <div className="flex items-center gap-1.5 mr-2">
+    <div className="border-b border-foreground/10 px-4 sm:px-6 py-3">
+      <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+        <div className="flex items-center gap-1.5 mr-1 sm:mr-2">
           <Filter className="h-3.5 w-3.5 text-muted-foreground" />
           <span className="label-mono">Filtrar</span>
         </div>
@@ -134,7 +134,7 @@ export default function FilterBar({
           onToggle={(v) => onToggleTrope(v as TropeType)}
         />
 
-        <div className="ml-auto flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 ml-auto">
           {hasFilters && (
             <button
               onClick={onClearAll}
