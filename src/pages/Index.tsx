@@ -213,7 +213,7 @@ export default function Index() {
       <ActionBanner selectedAuthors={selectedAuthors} selectedNewspapers={selectedNewspapers} />
 
       {totalPages > 1 && (
-        <div className="border-t border-foreground/10 px-6 py-3 flex items-center justify-between">
+        <div className="border-t border-foreground/10 px-4 sm:px-6 py-3 flex items-center justify-between">
           <button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}
