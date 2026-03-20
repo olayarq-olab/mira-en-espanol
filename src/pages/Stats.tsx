@@ -82,22 +82,22 @@ export default function Stats() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col bg-background overflow-x-hidden">
       <SiteHeader onNavigate={handleNavigate} currentPage="stats" />
 
       <div className="flex-1 overflow-y-auto">
         {/* Header */}
-        <div className="px-6 py-8 md:py-12 border-b border-foreground/10 max-w-5xl mx-auto w-full">
+        <div className="px-4 sm:px-6 py-8 md:py-12 border-b border-foreground/10 max-w-5xl mx-auto w-full">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
             <span className="label-mono">Análisis cuantitativo</span>
-            <h1 className="font-display text-3xl md:text-4xl font-bold mt-2">
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mt-2">
               Estadísticas del Archivo
             </h1>
-            <p className="text-muted-foreground mt-3 max-w-2xl text-sm">
+            <p className="text-muted-foreground mt-3 max-w-2xl text-xs sm:text-sm">
               Distribución y análisis cuantitativo de las entradas documentadas en el
               Observatorio de Sesgo Antisemita en Medios Españoles.
             </p>
@@ -105,46 +105,43 @@ export default function Stats() {
         </div>
 
         {/* Summary cards */}
-        <div className="max-w-5xl mx-auto w-full px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="max-w-5xl mx-auto w-full px-4 sm:px-6 py-6 sm:py-8 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           {[
             { label: "Total artículos", value: entries.length },
             { label: "Medios analizados", value: newspapers.filter((n) => entries.some((e) => e.newspaper === n)).length },
             { label: "Autores identificados", value: uniqueAuthors },
             { label: "Tasa de gravedad", value: `${flaggedRate}%` },
           ].map((s) => (
-            <div
-              key={s.label}
-              className="border border-foreground/10 p-4"
-            >
-              <span className="font-display text-3xl font-bold">{s.value}</span>
-              <p className="label-mono mt-1">{s.label}</p>
+            <div key={s.label} className="border border-foreground/10 p-3 sm:p-4">
+              <span className="font-display text-2xl sm:text-3xl font-bold">{s.value}</span>
+              <p className="label-mono mt-1 text-[8px] sm:text-[10px]">{s.label}</p>
             </div>
           ))}
         </div>
 
         {/* Charts */}
-        <div className="max-w-5xl mx-auto w-full px-6 pb-12 space-y-12">
+        <div className="max-w-5xl mx-auto w-full px-4 sm:px-6 pb-12 space-y-10 sm:space-y-12">
           {/* By newspaper */}
           <section>
-            <h2 className="font-display text-xl font-bold mb-1">
+            <h2 className="font-display text-lg sm:text-xl font-bold mb-1">
               Entradas por Medio
             </h2>
-            <p className="label-mono mb-6">
+            <p className="label-mono mb-4 sm:mb-6">
               Distribución de artículos documentados por cabecera
             </p>
-            <div className="h-[300px]">
+            <div className="h-[250px] sm:h-[300px] -ml-2 sm:ml-0">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                   data={byNewspaper}
                   layout="vertical"
-                  margin={{ left: 100, right: 20, top: 0, bottom: 0 }}
+                  margin={{ left: 10, right: 10, top: 0, bottom: 0 }}
                 >
                   <XAxis type="number" tick={{ fontSize: 10, fontFamily: "var(--font-mono)" }} />
                   <YAxis
                     dataKey="name"
                     type="category"
-                    tick={{ fontSize: 11, fontFamily: "var(--font-mono)" }}
-                    width={95}
+                    tick={{ fontSize: 10, fontFamily: "var(--font-mono)" }}
+                    width={80}
                   />
                   <Tooltip
                     contentStyle={{
@@ -162,13 +159,13 @@ export default function Stats() {
           </section>
 
           {/* By trope */}
-          <section className="grid md:grid-cols-2 gap-8">
+          <section className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             <div>
-              <h2 className="font-display text-xl font-bold mb-1">
+              <h2 className="font-display text-lg sm:text-xl font-bold mb-1">
                 Tipos de Tropo
               </h2>
-              <p className="label-mono mb-6">Clasificación por tipología</p>
-              <div className="h-[280px]">
+              <p className="label-mono mb-4 sm:mb-6">Clasificación por tipología</p>
+              <div className="h-[240px] sm:h-[280px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
@@ -177,7 +174,7 @@ export default function Stats() {
                       nameKey="name"
                       cx="50%"
                       cy="50%"
-                      outerRadius={100}
+                      outerRadius={80}
                       strokeWidth={1}
                       stroke="hsl(0,0%,98%)"
                     >
@@ -199,8 +196,8 @@ export default function Stats() {
             </div>
 
             <div>
-              <h2 className="font-display text-xl font-bold mb-1">Leyenda</h2>
-              <p className="label-mono mb-6">Categorías identificadas</p>
+              <h2 className="font-display text-lg sm:text-xl font-bold mb-1">Leyenda</h2>
+              <p className="label-mono mb-4 sm:mb-6">Categorías identificadas</p>
               <div className="space-y-2">
                 {byTrope.map((t, i) => (
                   <div key={t.name} className="flex items-center gap-3">
@@ -208,7 +205,7 @@ export default function Stats() {
                       className="w-3 h-3 flex-shrink-0"
                       style={{ background: COLORS[i % COLORS.length] }}
                     />
-                    <span className="text-sm flex-1">{t.name}</span>
+                    <span className="text-xs sm:text-sm flex-1">{t.name}</span>
                     <span className="font-mono-ui text-xs tabular text-muted-foreground">
                       {t.count}
                     </span>
@@ -220,26 +217,26 @@ export default function Stats() {
 
           {/* By author */}
           <section>
-            <h2 className="font-display text-xl font-bold mb-1">
+            <h2 className="font-display text-lg sm:text-xl font-bold mb-1">
               Autores más frecuentes
             </h2>
-            <p className="label-mono mb-6">
+            <p className="label-mono mb-4 sm:mb-6">
               Top autores con mayor número de entradas documentadas
             </p>
             <div className="space-y-1">
               {byAuthor.map((a, i) => (
                 <div
                   key={a.name}
-                  className="flex items-center gap-4 py-2 border-b border-foreground/5"
+                  className="flex items-center gap-3 sm:gap-4 py-2 border-b border-foreground/5"
                 >
-                  <span className="font-mono-ui text-xs text-muted-foreground w-6 tabular">
+                  <span className="font-mono-ui text-xs text-muted-foreground w-5 sm:w-6 tabular">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-sm flex-1">{a.name}</span>
-                  <div className="flex items-center gap-2">
+                  <span className="text-xs sm:text-sm flex-1 min-w-0 truncate">{a.name}</span>
+                  <div className="flex items-center gap-2 shrink-0">
                     <div
                       className="h-2 bg-primary"
-                      style={{ width: `${(a.count / byAuthor[0].count) * 120}px` }}
+                      style={{ width: `${(a.count / byAuthor[0].count) * 80}px` }}
                     />
                     <span className="font-mono-ui text-xs tabular w-6 text-right">
                       {a.count}
