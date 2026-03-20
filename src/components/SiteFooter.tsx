@@ -12,9 +12,9 @@ export default function SiteFooter() {
   ];
 
   return (
-    <footer className="border-t border-foreground/10 bg-muted/30 px-6 py-6 mt-auto">
-      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <nav className="flex items-center gap-6">
+    <footer className="border-t border-foreground/10 bg-muted/30 px-4 sm:px-6 py-6 mt-auto">
+      <div className="max-w-5xl mx-auto flex flex-col items-center gap-4">
+        <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
           {links.map((l) => (
             <button
               key={l.path}
@@ -25,7 +25,7 @@ export default function SiteFooter() {
             </button>
           ))}
         </nav>
-        <p className="label-mono text-muted-foreground">
+        <p className="label-mono text-muted-foreground text-center">
           © {new Date().getFullYear()} Asociación Española Contra el Antisemitismo
         </p>
       </div>

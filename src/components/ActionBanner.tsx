@@ -23,7 +23,6 @@ export default function ActionBanner({ selectedAuthors, selectedNewspapers }: Ac
 
   if (!hasAuthorFilter && !hasNewspaperFilter) return null;
 
-  // Find newspapers associated with selected authors
   const authorNewspapers = new Map<string, Set<Newspaper>>();
   if (hasAuthorFilter) {
     entries.forEach((e) => {
@@ -34,7 +33,6 @@ export default function ActionBanner({ selectedAuthors, selectedNewspapers }: Ac
     });
   }
 
-  // Find authors associated with selected newspapers
   const newspaperAuthors = new Map<Newspaper, Set<string>>();
   if (hasNewspaperFilter && !hasAuthorFilter) {
     entries.forEach((e) => {
@@ -70,18 +68,17 @@ export default function ActionBanner({ selectedAuthors, selectedNewspapers }: Ac
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="border-t-2 border-accent bg-accent/5 px-6 py-6"
+      className="border-t-2 border-accent bg-accent/5 px-4 sm:px-6 py-6"
     >
       <div className="max-w-3xl mx-auto text-center space-y-4">
-        <h3 className="font-display text-xl md:text-2xl font-bold tracking-tight">
+        <h3 className="font-display text-lg sm:text-xl md:text-2xl font-bold tracking-tight">
           EL ANTISEMITISMO SE COMBATE
         </h3>
-        <p className="text-sm text-muted-foreground max-w-xl mx-auto">
+        <p className="text-xs sm:text-sm text-muted-foreground max-w-xl mx-auto">
           ¡Ayúdanos a construir una sociedad sin antisemitismo!
         </p>
 
-        <div className="space-y-3 mt-4">
-          {/* Author-level CTAs */}
+        <div className="flex flex-col items-center gap-3 mt-4">
           {hasAuthorFilter &&
             selectedAuthors.flatMap((author) => {
               const nps = authorNewspapers.get(author);
@@ -90,25 +87,24 @@ export default function ActionBanner({ selectedAuthors, selectedNewspapers }: Ac
                 <a
                   key={`author-${author}-${newspaper}`}
                   href={buildAuthorMailto(author, newspaper)}
-                  className="inline-flex items-center gap-2 border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground px-4 py-2.5 text-xs font-mono-ui uppercase tracking-wide transition-colors duration-150 mx-1"
+                  className="inline-flex items-center gap-2 border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground px-3 sm:px-4 py-2.5 text-[10px] sm:text-xs font-mono-ui uppercase tracking-wide transition-colors duration-150 text-center leading-tight"
                 >
-                  <Mail className="h-3.5 w-3.5" />
-                  Envía un email a {newspaperEmails[newspaper].director} pidiendo que {author} deje de publicar contenido antisemita
+                  <Mail className="h-3.5 w-3.5 shrink-0" />
+                  <span>Envía un email a {newspaperEmails[newspaper].director} pidiendo que {author} deje de publicar contenido antisemita</span>
                 </a>
               ));
             })}
 
-          {/* Newspaper-level CTAs (only when no author filter) */}
           {hasNewspaperFilter &&
             !hasAuthorFilter &&
             selectedNewspapers.map((newspaper) => (
               <a
                 key={`newspaper-${newspaper}`}
                 href={buildNewspaperMailto(newspaper)}
-                className="inline-flex items-center gap-2 border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground px-4 py-2.5 text-xs font-mono-ui uppercase tracking-wide transition-colors duration-150 mx-1"
+                className="inline-flex items-center gap-2 border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground px-3 sm:px-4 py-2.5 text-[10px] sm:text-xs font-mono-ui uppercase tracking-wide transition-colors duration-150 text-center leading-tight"
               >
-                <Mail className="h-3.5 w-3.5" />
-                Envía un email a {newspaperEmails[newspaper].director} pidiendo que {newspaper} deje de publicar contenido antisemita
+                <Mail className="h-3.5 w-3.5 shrink-0" />
+                <span>Envía un email a {newspaperEmails[newspaper].director} pidiendo que {newspaper} deje de publicar contenido antisemita</span>
               </a>
             ))}
         </div>

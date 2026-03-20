@@ -16,21 +16,18 @@ export default function NewspaperCard({ newspaper }: NewspaperCardProps) {
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      className="border-b-2 border-foreground/20 bg-muted/50 px-6 py-4"
+      className="border-b-2 border-foreground/20 bg-muted/50 px-3 sm:px-6 py-4"
     >
-      <div className="border border-foreground/15 bg-background px-6 py-4 shadow-[0_2px_20px_-4px_hsl(var(--foreground)/0.08)]">
-        {/* Section label */}
+      <div className="border border-foreground/15 bg-background px-4 sm:px-6 py-4 shadow-[0_2px_20px_-4px_hsl(var(--foreground)/0.08)]">
         <p className="label-mono text-center mb-4 tracking-[0.15em]">Ficha del Medio</p>
 
-        {/* Header */}
-        <h2 className="font-display text-2xl md:text-3xl font-black tracking-tight text-center mb-1">
+        <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-center mb-1">
           {newspaper}
         </h2>
 
-        <hr className="border-foreground/15 my-5 max-w-[120px] mx-auto" />
+        <hr className="border-foreground/15 my-4 sm:my-5 max-w-[120px] mx-auto" />
 
-        {/* Staff grid */}
-        <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-6">
+        <div className="flex flex-wrap justify-center gap-x-6 sm:gap-x-8 gap-y-3 mb-6">
           {meta.staff.map((s) => (
             <div key={s.role} className="text-center">
               <p className="label-mono text-muted-foreground">{s.role}</p>
@@ -41,8 +38,7 @@ export default function NewspaperCard({ newspaper }: NewspaperCardProps) {
 
         <hr className="border-foreground/10 mb-6 max-w-xs mx-auto" />
 
-        {/* Corporate info */}
-        <div className="flex flex-wrap justify-center gap-x-12 gap-y-4">
+        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-x-12 gap-y-4">
           <div className="text-center">
             <div className="flex items-center justify-center gap-1.5 mb-1">
               <Building2 className="h-3.5 w-3.5 text-muted-foreground" />
@@ -59,23 +55,22 @@ export default function NewspaperCard({ newspaper }: NewspaperCardProps) {
           </div>
         </div>
 
-        {/* Contact info */}
         {meta.corporateContact && (
           <div className="mt-5 text-center space-y-1">
             <p className="label-mono text-muted-foreground">Corporate Affairs</p>
-            <div className="flex items-center justify-center gap-4 text-xs font-mono-ui">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xs font-mono-ui">
               {meta.corporateContact.email && (
                 <a
                   href={`mailto:${meta.corporateContact.email}`}
-                  className="flex items-center gap-1 text-accent hover:underline"
+                  className="flex items-center gap-1 text-accent hover:underline break-all"
                 >
-                  <Mail className="h-3 w-3" />
+                  <Mail className="h-3 w-3 shrink-0" />
                   {meta.corporateContact.email}
                 </a>
               )}
               {meta.corporateContact.phone && (
                 <span className="flex items-center gap-1 text-muted-foreground">
-                  <Phone className="h-3 w-3" />
+                  <Phone className="h-3 w-3 shrink-0" />
                   {meta.corporateContact.phone}
                 </span>
               )}
