@@ -150,10 +150,10 @@ export default function Index() {
         filteredCount={filtered.length}
       />
 
-      <div className="border-b border-foreground/10 px-6 py-2 flex items-center justify-between gap-4">
+      <div className="border-b border-foreground/10 px-4 sm:px-6 py-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4">
         <span className="label-mono">Últimas Entradas</span>
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             <span className="label-mono">Ordenar:</span>
             {([
               { value: "date-desc" as SortMode, label: "Recientes" },
@@ -213,7 +213,7 @@ export default function Index() {
       <ActionBanner selectedAuthors={selectedAuthors} selectedNewspapers={selectedNewspapers} />
 
       {totalPages > 1 && (
-        <div className="border-t border-foreground/10 px-6 py-3 flex items-center justify-between">
+        <div className="border-t border-foreground/10 px-4 sm:px-6 py-3 flex items-center justify-between">
           <button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}

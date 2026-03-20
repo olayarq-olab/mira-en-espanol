@@ -86,10 +86,14 @@
     @apply border-border;
   }
 
+  html, body {
+    overflow-x: hidden;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
-    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+    font-size: clamp(0.875rem, 0.8rem + 0.4vw, 1.25rem);
     line-height: 1.6;
   }
 
@@ -97,6 +101,7 @@
     font-family: var(--font-display);
     letter-spacing: -0.03em;
     text-wrap: balance;
+    overflow-wrap: break-word;
   }
 }
 

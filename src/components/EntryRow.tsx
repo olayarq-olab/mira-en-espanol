@@ -27,34 +27,34 @@ export default function EntryRow({
   return (
     <motion.div
       variants={listItem}
-      className="ledger-row group"
+      className="ledger-row group flex-col sm:flex-row gap-2 sm:gap-8"
       onClick={() => onClick(entry)}
     >
-      {/* Date */}
-      <div className="shrink-0 w-24">
-        <span className="font-mono-ui text-xs tabular text-muted-foreground">
-          {formattedDate}
-        </span>
-      </div>
-
-      {/* Newspaper */}
-      <div className="shrink-0 w-36">
-        <span className="font-display text-base font-bold">{entry.newspaper}</span>
+      {/* Mobile: date + newspaper inline */}
+      <div className="flex items-baseline gap-3 sm:contents">
+        <div className="shrink-0 sm:w-24">
+          <span className="font-mono-ui text-xs tabular text-muted-foreground">
+            {formattedDate}
+          </span>
+        </div>
+        <div className="shrink-0 sm:w-36">
+          <span className="font-display text-sm sm:text-base font-bold">{entry.newspaper}</span>
+        </div>
       </div>
 
       {/* Title + Excerpt */}
       <div className="flex-1 min-w-0">
-        <p className="font-display text-base font-bold leading-snug truncate">
+        <p className="font-display text-sm sm:text-base font-bold leading-snug line-clamp-2 sm:truncate">
           {entry.title}
         </p>
-        <p className="text-sm text-muted-foreground mt-1 line-clamp-1">
+        <p className="text-xs sm:text-sm text-muted-foreground mt-1 line-clamp-1">
           {entry.excerpt}
         </p>
       </div>
 
       {/* Meta */}
-      <div className="shrink-0 flex items-center gap-4">
-        <span className="label-mono">{entry.trope}</span>
+      <div className="shrink-0 flex items-center gap-3 sm:gap-4">
+        <span className="label-mono text-[9px] sm:text-[10px]">{entry.trope}</span>
         {entry.flagged && (
           <span className="inline-block w-2 h-2 bg-accent" title="Flagged" />
         )}
