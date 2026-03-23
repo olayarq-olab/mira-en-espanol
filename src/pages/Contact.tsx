@@ -44,11 +44,11 @@ export default function Contact() {
             <div>
               <p className="label-mono mb-2">Email</p>
               <a
-                href="mailto:contacto@asociacioncontraelantisemitismo.es"
+                href="mailto:contacto@contraelantisemitismo.com"
                 className="text-sm flex items-center gap-2 text-accent hover:underline"
               >
                 <Mail className="h-3.5 w-3.5" />
-                contacto@asociacioncontraelantisemitismo.es
+                contacto@contraelantisemitismo.com
               </a>
             </div>
 
