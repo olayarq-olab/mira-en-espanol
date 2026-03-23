@@ -14,7 +14,7 @@ import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminLayout from "./components/admin/AdminLayout.tsx";
 import AdminDashboard from "./pages/admin/AdminDashboard.tsx";
 import AdminCases from "./pages/admin/AdminCases.tsx";
-import AdminArticles from "./pages/admin/AdminArticles.tsx";
+
 
 const queryClient = new QueryClient();
 
