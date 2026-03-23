@@ -71,42 +71,6 @@ export type Database = {
         }
         Relationships: []
       }
-      editorial_articles: {
-        Row: {
-          author: string
-          content: string
-          cover_image_url: string | null
-          created_at: string
-          date: string
-          id: string
-          published: boolean
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          author: string
-          content: string
-          cover_image_url?: string | null
-          created_at?: string
-          date: string
-          id?: string
-          published?: boolean
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          author?: string
-          content?: string
-          cover_image_url?: string | null
-          created_at?: string
-          date?: string
-          id?: string
-          published?: boolean
-          title?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
       user_roles: {
         Row: {
           id: string
