@@ -2,7 +2,7 @@
 
 Overview
 
-MIRA en Español is a media analysis platform that documents and analyzes narratives related to Jewish communities in Spanish-language media.
+Observatorio de Sesgo antisemita is a media analysis platform that documents and analyzes narratives related to Jewish communities in Spanish-language media.
 
 The project is designed as a structured observatory, combining a database of documented cases with analytical context, with the goal of providing transparency, traceability and clarity.
 
