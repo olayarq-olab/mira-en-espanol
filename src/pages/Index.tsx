@@ -127,6 +127,7 @@ export default function Index() {
     if (page === "about") navigate("/about");
     if (page === "contact") navigate("/contact");
     if (page === "antisemitism") navigate("/antisemitismo");
+    if (page === "media") navigate("/mediao");
   };
 
   if (showHero) {

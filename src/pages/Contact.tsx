@@ -16,6 +16,7 @@ export default function Contact() {
     else if (page === "about") navigate("/about");
     else if (page === "contact") navigate("/contact");
     else if (page === "antisemitism") navigate("/antisemitismo");
+    else if (page === "media") navigate("/mediao");
   };
 
   const handleSubmit = (e: React.FormEvent) => {
