@@ -6,13 +6,14 @@ import SiteFooter from "@/components/SiteFooter";
 export default function About() {
   const navigate = useNavigate();
 
-  const handleNavigate = (page: "home" | "archive" | "stats" | "about" | "contact" | "antisemitism") => {
+  const handleNavigate = (page: "home" | "archive" | "stats" | "about" | "contact" | "antisemitism" | "media") => {
     if (page === "home") navigate("/");
     if (page === "archive") navigate("/?view=archive");
     if (page === "stats") navigate("/stats");
     if (page === "about") navigate("/about");
     if (page === "contact") navigate("/contact");
     if (page === "antisemitism") navigate("/antisemitismo");
+    if (page === "media") navigate("/mediao");
   };
 
   return (

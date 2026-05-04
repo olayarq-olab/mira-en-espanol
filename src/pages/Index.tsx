@@ -120,13 +120,14 @@ export default function Index() {
     setPage(1);
   };
 
-  const handleNavigate = (page: "home" | "archive" | "stats" | "about" | "contact" | "antisemitism") => {
+  const handleNavigate = (page: "home" | "archive" | "stats" | "about" | "contact" | "antisemitism" | "media") => {
     if (page === "home") setShowHero(true);
     if (page === "archive") setShowHero(false);
     if (page === "stats") navigate("/stats");
     if (page === "about") navigate("/about");
     if (page === "contact") navigate("/contact");
     if (page === "antisemitism") navigate("/antisemitismo");
+    if (page === "media") navigate("/mediao");
   };
 
   if (showHero) {

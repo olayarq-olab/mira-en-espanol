@@ -9,6 +9,8 @@ import Stats from "./pages/Stats.tsx";
 import About from "./pages/About.tsx";
 import Contact from "./pages/Contact.tsx";
 import Antisemitism from "./pages/Antisemitism.tsx";
+import Media from "./pages/Media.tsx";
+import MediaProfile from "./pages/MediaProfile.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminLayout from "./components/admin/AdminLayout.tsx";
@@ -31,6 +33,8 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/antisemitismo" element={<Antisemitism />} />
+            <Route path="/medios" element={<Media />} />
+            <Route path="/medios/:slug" element={<MediaProfile />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminDashboard />} />
