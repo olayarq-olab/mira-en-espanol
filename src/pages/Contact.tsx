@@ -9,7 +9,7 @@ export default function Contact() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
 
-  const handleNavigate = (page: "home" | "archive" | "stats" | "about" | "contact" | "antisemitism") => {
+  const handleNavigate = (page: "home" | "archive" | "stats" | "about" | "contact" | "antisemitism" | "media") => {
     if (page === "home") navigate("/");
     else if (page === "archive") navigate("/?view=archive");
     else if (page === "stats") navigate("/stats");

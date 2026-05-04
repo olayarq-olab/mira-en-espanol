@@ -120,7 +120,7 @@ export default function Index() {
     setPage(1);
   };
 
-  const handleNavigate = (page: "home" | "archive" | "stats" | "about" | "contact" | "antisemitism") => {
+  const handleNavigate = (page: "home" | "archive" | "stats" | "about" | "contact" | "antisemitism" | "media") => {
     if (page === "home") setShowHero(true);
     if (page === "archive") setShowHero(false);
     if (page === "stats") navigate("/stats");
