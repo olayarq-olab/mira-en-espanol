@@ -2,22 +2,23 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 interface SiteHeaderProps {
-  onNavigate?: (page: "home" | "archive" | "stats" | "about" | "contact" | "antisemitism") => void;
-  currentPage?: "archive" | "stats" | "about" | "contact" | "antisemitism";
+  onNavigate?: (page: "home" | "archive" | "stats" | "about" | "contact" | "antisemitism" | "media") => void;
+  currentPage?: "archive" | "stats" | "about" | "contact" | "antisemitism" | "media";
 }
 
 export default function SiteHeader({ onNavigate, currentPage = "archive" }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const navItems: { label: string; page: "about" | "antisemitism" | "archive" | "stats" | "contact" }[] = [
+  const navItems: { label: string; page: "about" | "antisemitism" | "archive" | "stats" | "contact" | "media" }[] = [
     { label: "Sobre nosotros", page: "about" },
     { label: "Antisemitismo", page: "antisemitism" },
+    { label: "Medios", page: "media" },
     { label: "Archivo", page: "archive" },
     { label: "Estadísticas", page: "stats" },
     { label: "Contacto", page: "contact" },
   ];
 
-  const handleNav = (page: "home" | "archive" | "stats" | "about" | "contact" | "antisemitism") => {
+  const handleNav = (page: "home" | "archive" | "stats" | "about" | "contact" | "antisemitism" | "media") => {
     onNavigate?.(page);
     setMenuOpen(false);
   };

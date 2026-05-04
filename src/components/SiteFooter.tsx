@@ -4,6 +4,7 @@ export default function SiteFooter() {
   const navigate = useNavigate();
 
   const links = [
+    { label: "Medios", path: "/medios" },
     { label: "Archivo", path: "/" },
     { label: "Estadísticas", path: "/stats" },
     { label: "Antisemitismo", path: "/antisemitismo" },
