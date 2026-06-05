@@ -104,29 +104,23 @@ export default function Media() {
                       </div>
                     )}
 
-                    <div className="mt-auto pt-5 border-t border-foreground/10 flex items-baseline justify-between gap-4">
-                      <div className="flex items-baseline gap-4 sm:gap-6">
-                        <div>
-                          <span className="font-display text-xl sm:text-2xl font-black tabular">
-                            {s.articles}
-                          </span>
-                          <span className="label-mono text-muted-foreground ml-1.5">
-                            artículos
-                          </span>
-                        </div>
-                        <div>
-                          <span className="font-display text-xl sm:text-2xl font-black tabular">
-                            {s.authors}
-                          </span>
-                          <span className="label-mono text-muted-foreground ml-1.5">
-                            autores
-                          </span>
-                        </div>
+                    <div className="mt-auto pt-5 border-t border-foreground/10 flex items-baseline gap-4 sm:gap-6">
+                      <div>
+                        <span className="font-display text-xl sm:text-2xl font-black tabular">
+                          {s.articles}
+                        </span>
+                        <span className="label-mono text-muted-foreground ml-1.5">
+                          artículos
+                        </span>
                       </div>
-                      <span className="shrink-0 label-mono text-muted-foreground group-hover:text-foreground transition-colors flex items-center gap-1">
-                        Ver ficha
-                        <ArrowRight className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5" />
-                      </span>
+                      <div>
+                        <span className="font-display text-xl sm:text-2xl font-black tabular">
+                          {s.authors}
+                        </span>
+                        <span className="label-mono text-muted-foreground ml-1.5">
+                          autores
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </Link>
