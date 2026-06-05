@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
@@ -7,6 +7,7 @@ import SiteFooter from "@/components/SiteFooter";
 import { supabase } from "@/integrations/supabase/client";
 import { newspapers as staticNewspapers } from "@/data/entries";
 import type { Newspaper } from "@/data/entries";
+import { newspaperMeta } from "@/data/newspaperMeta";
 import { newspaperToSlug } from "@/lib/newspaperSlug";
 
 interface MediaStat {
@@ -62,52 +63,75 @@ export default function Media() {
         transition={{ duration: 0.4 }}
         className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 py-10 sm:py-14"
       >
-        <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight border-b border-foreground/10 pb-4 mb-8">
+        <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight border-b border-foreground/10 pb-4 mb-8 sm:mb-10">
           Medios que divulgan el antisemitismo
         </h2>
 
         {loading ? (
           <p className="label-mono">Cargando...</p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {stats.map((s) => (
-              <article
-                key={s.newspaper}
-                className="border border-foreground/15 bg-background p-5 flex flex-col shadow-[0_2px_20px_-4px_hsl(var(--foreground)/0.08)]"
-              >
-                <p className="label-mono text-center text-muted-foreground tracking-[0.15em]">
-                  Periódico
-                </p>
-                <div className="border border-foreground/20 mt-3 mb-5 py-8 px-4 flex items-center justify-center min-h-[110px]">
-                  <h3 className="font-display text-2xl sm:text-3xl font-black tracking-tight text-center">
-                    {s.newspaper}
-                  </h3>
-                </div>
-
-                <div className="flex justify-around border-t border-foreground/10 pt-4 mb-5">
-                  <div className="text-center">
-                    <p className="font-display text-3xl sm:text-4xl font-black tabular">
-                      {s.articles}
-                    </p>
-                    <p className="label-mono text-muted-foreground mt-1">Artículos analizados</p>
-                  </div>
-                  <div className="w-px bg-foreground/10" />
-                  <div className="text-center">
-                    <p className="font-display text-3xl sm:text-4xl font-black tabular">
-                      {s.authors}
-                    </p>
-                    <p className="label-mono text-muted-foreground mt-1">Autores analizados</p>
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => navigate(`/medios/${newspaperToSlug(s.newspaper)}`)}
-                  className="mt-auto self-center inline-flex items-center gap-2 border border-foreground/30 px-4 py-2 label-mono hover:bg-foreground hover:text-background transition-colors"
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {stats.map((s, i) => {
+              const meta = newspaperMeta[s.newspaper];
+              return (
+                <Link
+                  key={s.newspaper}
+                  to={`/medios/${newspaperToSlug(s.newspaper)}`}
+                  className="group relative flex flex-col border border-foreground/15 bg-background p-6 sm:p-8 cursor-pointer transition-all duration-300 hover:border-foreground/40 hover:shadow-[0_8px_30px_-8px_hsl(var(--foreground)/0.12)] focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  aria-label={`Ver ficha de ${s.newspaper}`}
                 >
-                  Ver medio <ArrowRight className="w-3 h-3" />
-                </button>
-              </article>
-            ))}
+                  <div className="flex-1 flex flex-col">
+                    <div className="mb-6 sm:mb-8">
+                      <h3 className="font-display text-2xl sm:text-[1.75rem] font-black tracking-tight leading-tight">
+                        {s.newspaper}
+                      </h3>
+                    </div>
+
+                    {meta && (
+                      <div className="mb-6 sm:mb-8 space-y-3">
+                        <div>
+                          <p className="label-mono text-muted-foreground">Empresa matriz</p>
+                          <p className="font-display text-sm sm:text-base font-semibold mt-0.5">
+                            {meta.empresaMatriz}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="label-mono text-muted-foreground">Accionista mayoritario</p>
+                          <p className="font-display text-sm sm:text-base font-semibold mt-0.5">
+                            {meta.accionistaMayoritario}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="mt-auto pt-5 border-t border-foreground/10 flex items-baseline justify-between gap-4">
+                      <div className="flex items-baseline gap-4 sm:gap-6">
+                        <div>
+                          <span className="font-display text-xl sm:text-2xl font-black tabular">
+                            {s.articles}
+                          </span>
+                          <span className="label-mono text-muted-foreground ml-1.5">
+                            artículos
+                          </span>
+                        </div>
+                        <div>
+                          <span className="font-display text-xl sm:text-2xl font-black tabular">
+                            {s.authors}
+                          </span>
+                          <span className="label-mono text-muted-foreground ml-1.5">
+                            autores
+                          </span>
+                        </div>
+                      </div>
+                      <span className="shrink-0 label-mono text-muted-foreground group-hover:text-foreground transition-colors flex items-center gap-1">
+                        Ver ficha
+                        <ArrowRight className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5" />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         )}
       </motion.section>
