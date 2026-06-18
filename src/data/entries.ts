@@ -14,7 +14,8 @@ export type Newspaper =
   | "ABC"
   | "Público"
   | "elDiario.es"
-  | "La Razón";
+  | "La Razón"
+  | "The Objective";
 
 export interface Entry {
   id: string;
@@ -326,6 +327,7 @@ export const newspapers: Newspaper[] = [
   "Público",
   "elDiario.es",
   "La Razón",
+  "The Objective",
 ];
 
 export const tropeTypes: TropeType[] = [

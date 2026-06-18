@@ -68,4 +68,11 @@ export const newspaperMeta: Record<Newspaper, NewspaperMeta> = {
     empresaMatriz: "Planeta DeAgostini",
     accionistaMayoritario: "Grupo Planeta",
   },
+  "The Objective": {
+    staff: [
+      { role: "Director", name: "Álvaro Nieto" },
+    ],
+    empresaMatriz: "The Objective Media S.L.",
+    accionistaMayoritario: "Álvaro Nieto y socios fundadores",
+  },
 };

@@ -15,6 +15,7 @@ const newspaperEmails: Record<Newspaper, { email: string; director: string }> = 
   "Público": { email: "redaccion@publico.es", director: "el director de Público" },
   "elDiario.es": { email: "redaccion@eldiario.es", director: "el director de elDiario.es" },
   "La Razón": { email: "redaccion@larazon.es", director: "el director de La Razón" },
+  "The Objective": { email: "redaccion@theobjective.com", director: "el director de The Objective" },
 };
 
 export default function ActionBanner({ selectedAuthors, selectedNewspapers }: ActionBannerProps) {

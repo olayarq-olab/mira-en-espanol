@@ -1,6 +1,21 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { entries } from "@/data/entries";
+import { newspaperToSlug } from "@/lib/newspaperSlug";
 import { useMemo } from "react";
+import eldiarioLogo from "@/assets/logos/eldiario.png.asset.json";
+import elpaisLogo from "@/assets/logos/elpais.png.asset.json";
+import theobjectiveLogo from "@/assets/logos/theobjective.png.asset.json";
+import abcLogo from "@/assets/logos/abc.png.asset.json";
+import elmundoLogo from "@/assets/logos/elmundo.png.asset.json";
+
+const mediaLogos = [
+  { name: "elDiario.es", logo: eldiarioLogo.url },
+  { name: "El País", logo: elpaisLogo.url },
+  { name: "The Objective", logo: theobjectiveLogo.url },
+  { name: "ABC", logo: abcLogo.url },
+  { name: "El Mundo", logo: elmundoLogo.url },
+];
 
 const counter = {
   hidden: { opacity: 0, y: 20 },
@@ -71,6 +86,37 @@ export default function HeroSection({ onEnter }: { onEnter: () => void }) {
             </motion.div>
           ))}
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="w-full max-w-3xl mt-6 sm:mt-8"
+          aria-label="Medios analizados"
+        >
+          <span className="label-mono block text-center mb-4 sm:mb-5 text-muted-foreground">
+            Medios en el archivo
+          </span>
+          <ul className="flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-10 gap-y-4 sm:gap-y-5">
+            {mediaLogos.map((m) => (
+              <li key={m.name}>
+                <Link
+                  to={`/medios/${newspaperToSlug(m.name)}`}
+                  aria-label={`Ver ficha de ${m.name}`}
+                  className="block opacity-60 hover:opacity-100 transition-opacity duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 rounded-sm"
+                >
+                  <img
+                    src={m.logo}
+                    alt={`Logo de ${m.name}`}
+                    loading="lazy"
+                    className="h-6 sm:h-7 md:h-8 w-auto object-contain"
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+
 
         <motion.button
           initial={{ opacity: 0 }}
