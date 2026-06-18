@@ -27,7 +27,7 @@ export default function About() {
         className="flex-1 max-w-3xl mx-auto px-6 py-12 space-y-6"
       >
         <h2 className="font-display text-2xl font-bold tracking-tight border-b border-foreground/10 pb-4">
-          Sobre nosotros
+          ¿Quiénes somos?
         </h2>
 
         <div className="space-y-5 text-sm leading-relaxed text-foreground/85">
@@ -55,6 +55,14 @@ export default function About() {
           <p>
             En su propósito de señalar el antisemitismo imperante en el espacio mediático, y entre otras actuaciones, la Asociación establecerá un archivo de artículos y manifestaciones antisemitas con base en la definición de antisemitismo establecida por la <strong>IHRA</strong> (Alianza Internacional para el Recuerdo del Holocausto), ratificada por España, así como por otras 34 naciones.
           </p>
+          
+          <h2 className="font-display text-2xl font-bold tracking-tight border-b border-foreground/10 pb-4 pt-8">
+            ¿Qué hacemos?
+          </h2>
+
+          <h3 className="font-display text-xl font-semibold tracking-tight pt-4">
+            Metodología
+          </h3>
         </div>
       </motion.article>
 
