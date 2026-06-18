@@ -1,6 +1,21 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { entries } from "@/data/entries";
+import { newspaperToSlug } from "@/lib/newspaperSlug";
 import { useMemo } from "react";
+import eldiarioLogo from "@/assets/logos/eldiario.png.asset.json";
+import elpaisLogo from "@/assets/logos/elpais.png.asset.json";
+import theobjectiveLogo from "@/assets/logos/theobjective.png.asset.json";
+import abcLogo from "@/assets/logos/abc.png.asset.json";
+import elmundoLogo from "@/assets/logos/elmundo.png.asset.json";
+
+const mediaLogos = [
+  { name: "elDiario.es", logo: eldiarioLogo.url },
+  { name: "El País", logo: elpaisLogo.url },
+  { name: "The Objective", logo: theobjectiveLogo.url },
+  { name: "ABC", logo: abcLogo.url },
+  { name: "El Mundo", logo: elmundoLogo.url },
+];
 
 const counter = {
   hidden: { opacity: 0, y: 20 },
