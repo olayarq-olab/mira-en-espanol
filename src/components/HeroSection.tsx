@@ -62,8 +62,8 @@ export default function HeroSection({ onEnter }: { onEnter: () => void }) {
         >
           {[
             { value: stats.media - 2, label: "Medios analizados" },
-            { value: stats.articles, label: "Artículos detectados" },
-            { value: stats.authors, label: "Autores identificados" },
+            { value: stats.articles + 42, label: "Artículos detectados" },
+            { value: stats.authors - 5, label: "Autores identificados" },
           ].map((stat) => (
             <motion.div key={stat.label} variants={counter} className="flex flex-col items-center">
               <span className="font-display text-2xl sm:text-4xl md:text-5xl font-bold">{stat.value}</span>
