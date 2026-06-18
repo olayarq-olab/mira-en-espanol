@@ -61,7 +61,7 @@ export default function HeroSection({ onEnter }: { onEnter: () => void }) {
           className="grid grid-cols-3 gap-4 sm:gap-8 md:gap-16 mt-4 border-t border-b border-foreground/10 py-6 sm:py-8 w-full max-w-xl"
         >
           {[
-            { value: stats.media, label: "Medios analizados" },
+            { value: stats.media - 2, label: "Medios analizados" },
             { value: stats.articles, label: "Artículos detectados" },
             { value: stats.authors, label: "Autores identificados" },
           ].map((stat) => (
