@@ -97,26 +97,28 @@ export default function HeroSection({ onEnter }: { onEnter: () => void }) {
           <span className="label-mono block text-center mb-4 sm:mb-5 text-muted-foreground">
             Medios en el archivo
           </span>
-          <ul className="flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-10 gap-y-4 sm:gap-y-5">
+          <ul className="grid grid-cols-3 sm:grid-cols-5 gap-4 sm:gap-6">
             {mediaLogos.map((m) => (
-              <li key={m.name}>
+              <li key={m.name} className="flex flex-col items-center">
                 <Link
                   to={`/medios/${newspaperToSlug(m.name)}`}
                   aria-label={`Ver ficha de ${m.name}`}
-                  className="block opacity-60 hover:opacity-100 transition-opacity duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 rounded-sm"
+                  className="flex items-center justify-center h-8 sm:h-10 w-full opacity-60 hover:opacity-100 transition-opacity duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 rounded-sm"
                 >
                   <img
                     src={m.logo}
                     alt={`Logo de ${m.name}`}
                     loading="lazy"
-                    className="w-24 sm:w-28 md:w-32 h-6 sm:h-7 md:h-8 object-contain"
+                    className="max-h-full w-auto max-w-[100px] sm:max-w-[120px] object-contain"
                   />
                 </Link>
+                <span className="mt-2 text-[10px] sm:text-xs label-mono text-muted-foreground text-center leading-tight">
+                  {m.name}
+                </span>
               </li>
             ))}
           </ul>
         </motion.div>
-
 
         <motion.button
           initial={{ opacity: 0 }}
