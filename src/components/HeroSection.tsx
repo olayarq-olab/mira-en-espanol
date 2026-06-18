@@ -42,7 +42,7 @@ export default function HeroSection({ onEnter }: { onEnter: () => void }) {
     <div className="min-h-screen flex flex-col bg-background">
       <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-4 md:py-8 max-w-4xl mx-auto text-center">
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: -10 } and
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
@@ -73,61 +73,4 @@ export default function HeroSection({ onEnter }: { onEnter: () => void }) {
           variants={container}
           initial="hidden"
           animate="show"
-          className="grid grid-cols-3 gap-4 sm:gap-8 md:gap-16 mt-4 border-t border-b border-foreground/10 py-6 sm:py-8 w-full max-w-xl"
-        >
-          {[
-            { value: stats.media - 2, label: "Medios analizados" },
-            { value: stats.articles + 42, label: "Artículos detectados" },
-            { value: stats.authors - 5, label: "Autores identificados" },
-          ].map((stat) => (
-            <motion.div key={stat.label} variants={counter} className="flex flex-col items-center">
-              <span className="font-display text-2xl sm:text-4xl md:text-5xl font-bold">{stat.value}</span>
-              <span className="label-mono mt-2 text-center text-[8px] sm:text-[10px]">{stat.label}</span>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="w-full max-w-3xl mt-6 sm:mt-8"
-          aria-label="Medios analizados"
-        >
-          <span className="label-mono block text-center mb-4 sm:mb-5 text-muted-foreground">
-            Medios en el archivo
-          </span>
-          <ul className="flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-10 gap-y-4 sm:gap-y-5">
-            {mediaLogos.map((m) => (
-              <li key={m.name}>
-                <Link
-                  to={`/medios/${newspaperToSlug(m.name)}`}
-                  aria-label={`Ver ficha de ${m.name}`}
-                  className="block opacity-60 hover:opacity-100 transition-opacity duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 rounded-sm"
-                >
-                  <img
-                    src={m.logo}
-                    alt={`Logo de ${m.name}`}
-                    loading="lazy"
-                    className="w-24 sm:w-28 md:w-32 h-6 sm:h-7 md:h-8 object-contain"
-                  />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-
-
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          onClick={onEnter}
-          className="mt-6 border border-foreground/20 px-6 sm:px-8 py-3 font-mono-ui text-xs uppercase tracking-widest hover:bg-foreground hover:text-background transition-colors duration-200"
-        >
-          Explorar el archivo →
-        </motion.button>
-      </div>
-    </div>
-  );
-}
+          className="grid grid-cols-3 gap-4 sm:gap-8 md:gap-16 mt-4 border-t border-b border-foreground/putting the old content back and trying a different approach
