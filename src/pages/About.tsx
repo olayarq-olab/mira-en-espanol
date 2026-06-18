@@ -60,6 +60,13 @@ export default function About() {
             ¿Qué hacemos?
           </h2>
 
+          <p>
+            España Libre de Antisemitismo es un proyecto de documentación y análisis de contenidos publicados en medios de comunicación españoles que contienen narrativas, estereotipos, imágenes o argumentos identificados como antisemitas.
+          </p>
+          <p>
+            El objetivo del observatorio es registrar, clasificar y contextualizar estos contenidos para facilitar su estudio y contribuir a una conversación pública basada en hechos verificables.
+          </p>
+
           <h3 className="font-display text-xl font-semibold tracking-tight pt-4">
             Metodología
           </h3>
