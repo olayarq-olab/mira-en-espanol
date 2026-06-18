@@ -109,7 +109,7 @@ export default function HeroSection({ onEnter }: { onEnter: () => void }) {
                     src={m.logo}
                     alt={`Logo de ${m.name}`}
                     loading="lazy"
-                    className="h-6 sm:h-7 md:h-8 w-auto object-contain"
+                    className="w-24 sm:w-28 md:w-32 h-6 sm:h-7 md:h-8 object-contain"
                   />
                 </Link>
               </li>
