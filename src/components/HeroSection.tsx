@@ -10,11 +10,11 @@ import abcLogo from "@/assets/logos/abc.png.asset.json";
 import elmundoLogo from "@/assets/logos/elmundo.png.asset.json";
 
 const mediaLogos = [
-  { name: "elDiario.es", logo: "/logos/eldiario-clean.png" },
-  { name: "El País", logo: elpaisLogo.url },
-  { name: "The Objective", logo: theobjectiveLogo.url },
-  { name: "ABC", logo: abcLogo.url },
-  { name: "El Mundo", logo: elmundoLogo.url },
+  { name: "elDiario.es", logo: "/logos/eldiario-clean-transparent.png" },
+  { name: "El País", logo: "/logos/elpais-cropped.png" },
+  { name: "The Objective", logo: "/logos/theobjective-clean.png" },
+  { name: "ABC", logo: "/logos/abc-clean.png" },
+  { name: "El Mundo", logo: "/logos/elmundo-cropped.png" },
 ];
 
 const counter = {
@@ -109,7 +109,7 @@ export default function HeroSection({ onEnter }: { onEnter: () => void }) {
                     src={m.logo}
                     alt={`Logo de ${m.name}`}
                     loading="lazy"
-                    className="w-24 sm:w-28 md:w-32 h-6 sm:h-7 md:h-8 object-contain"
+                    className="h-5 sm:h-6 md:h-7 w-auto max-w-[140px] object-contain"
                   />
                 </Link>
               </li>
