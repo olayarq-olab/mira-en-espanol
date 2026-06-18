@@ -70,6 +70,22 @@ export default function About() {
           <h3 className="font-display text-xl font-semibold tracking-tight pt-4">
             Metodología
           </h3>
+
+          <p>
+            Cada entrada publicada en el observatorio sigue un proceso de revisión compuesto por las siguientes fases:
+          </p>
+
+          <ul className="list-disc list-inside space-y-1.5">
+            <li>Identificación del contenido publicado.</li>
+            <li>Verificación de la fuente original.</li>
+            <li>Conservación de la referencia documental.</li>
+            <li>Clasificación de los elementos identificados.</li>
+            <li>Elaboración de un análisis explicativo y contextual.</li>
+          </ul>
+
+          <p>
+            El objetivo no es valorar las intenciones de los autores, sino analizar el contenido publicado y su relación con narrativas antisemitas documentadas históricamente. Las entradas del observatorio incluyen siempre la referencia a la fuente original analizada.
+          </p>
         </div>
       </motion.article>
 
