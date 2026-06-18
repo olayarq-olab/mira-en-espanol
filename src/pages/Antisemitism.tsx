@@ -141,15 +141,42 @@ export default function Antisemitism() {
           </blockquote>
 
           <p>
-            Asimismo, para ilustrar cómo se manifiesta el antisemitismo y cómo identificarlo, la IHRA acompaña su definición con los siguientes once ejemplos, que no son exhaustivos pero que servirán de referencia a esta Asociación para clasificar determinadas actitudes o declaraciones como antisemitas:
+            Asimismo, para ilustrar cómo se manifiesta el antisemitismo, la IHRA acompaña su definición con un conjunto de ejemplos que, junto a la literatura académica especializada, sirven de referencia a esta Asociación para clasificar las categorías que se detallan a continuación.
           </p>
-
-          <ol className="list-decimal list-outside pl-5 space-y-3 mt-4">
-            {ihraExamples.map((example, i) => (
-              <li key={i} className="pl-1">{example}</li>
-            ))}
-          </ol>
         </div>
+
+        <section className="pt-10 mt-10 border-t border-foreground/10 space-y-6">
+          <header className="space-y-3">
+            <h3 className="font-display text-xl font-bold tracking-tight">
+              Categorías de Antisemitismo
+            </h3>
+            <p className="text-sm leading-relaxed text-foreground/70 max-w-2xl">
+              Las siguientes categorías se basan en la definición de antisemitismo de la International Holocaust Remembrance Alliance (IHRA) y en la literatura académica especializada sobre antisemitismo histórico y contemporáneo.
+            </p>
+          </header>
+
+          <Accordion type="single" collapsible className="w-full">
+            {categorias.map((cat, i) => (
+              <AccordionItem
+                key={i}
+                value={`cat-${i}`}
+                className="border-b border-foreground/10 data-[state=open]:border-l-2 data-[state=open]:border-l-accent data-[state=open]:bg-foreground/[0.015] data-[state=open]:pl-4 transition-all"
+              >
+                <AccordionTrigger className="text-left font-display text-base sm:text-lg font-semibold tracking-tight hover:no-underline py-5 gap-4">
+                  <span className="flex items-baseline gap-3">
+                    <span className="label-mono text-[10px] text-foreground/40 tabular w-6 shrink-0">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span>{cat.title}</span>
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent className="text-sm leading-relaxed text-foreground/80 pb-6 pl-9 pr-2">
+                  {cat.body}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </section>
       </motion.article>
 
       <SiteFooter />
