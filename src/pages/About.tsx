@@ -67,23 +67,19 @@ export default function About() {
             El objetivo del observatorio es registrar, clasificar y contextualizar estos contenidos para facilitar su estudio y contribuir a una conversación pública basada en hechos verificables.
           </p>
 
-          <h3 className="font-display text-xl font-semibold tracking-tight pt-4">
-            Metodología
-          </h3>
-
           <p>
             Cada entrada publicada en el observatorio sigue un proceso de revisión compuesto por las siguientes fases:
-          </p>
-
-          <ul className="list-disc list-inside space-y-1.5">
-            <li>Identificación del contenido publicado.</li>
-            <li>Verificación de la fuente original.</li>
-            <li>Conservación de la referencia documental.</li>
-            <li>Clasificación de los elementos identificados.</li>
-            <li>Elaboración de un análisis explicativo y contextual.</li>
-          </ul>
-
-          <p>
+            <br /><br />
+            Identificación del contenido publicado.
+            <br /><br />
+            Verificación de la fuente original.
+            <br /><br />
+            Conservación de la referencia documental.
+            <br /><br />
+            Clasificación de los elementos identificados.
+            <br /><br />
+            Elaboración de un análisis explicativo y contextual.
+            <br /><br />
             El objetivo no es valorar las intenciones de los autores, sino analizar el contenido publicado y su relación con narrativas antisemitas documentadas históricamente. Las entradas del observatorio incluyen siempre la referencia a la fuente original analizada.
           </p>
         </div>
