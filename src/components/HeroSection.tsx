@@ -40,7 +40,7 @@ export default function HeroSection({ onEnter }: { onEnter: () => void }) {
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="font-display text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mt-6 leading-[1.1]"
         >
-          Observatorio de Sesgo Antisemita en Medios Españoles
+          España Libre de Antisemitismo
         </motion.h1>
 
         <motion.p
