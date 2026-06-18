@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { entries } from "@/data/entries";
 import { newspaperToSlug } from "@/lib/newspaperSlug";
 import { useMemo } from "react";
-import eldiarioLogo from "@/assets/logos/eldiario.png.asset.json";
+
 import elpaisLogo from "@/assets/logos/elpais.png.asset.json";
 import theobjectiveLogo from "@/assets/logos/theobjective.png.asset.json";
 import abcLogo from "@/assets/logos/abc.png.asset.json";
