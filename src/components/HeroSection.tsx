@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import { entries } from "@/data/entries";
 import { newspaperToSlug } from "@/lib/newspaperSlug";
 import { useMemo } from "react";
-import eldiarioLogo from "@/assets/logos/eldiario.png.asset.json";
+
 import elpaisLogo from "@/assets/logos/elpais.png.asset.json";
 import theobjectiveLogo from "@/assets/logos/theobjective.png.asset.json";
 import abcLogo from "@/assets/logos/abc.png.asset.json";
 import elmundoLogo from "@/assets/logos/elmundo.png.asset.json";
 
 const mediaLogos = [
-  { name: "elDiario.es", logo: eldiarioLogo.url },
+  { name: "elDiario.es", logo: "/logos/eldiario-clean.png" },
   { name: "El País", logo: elpaisLogo.url },
   { name: "The Objective", logo: theobjectiveLogo.url },
   { name: "ABC", logo: abcLogo.url },
@@ -109,7 +109,7 @@ export default function HeroSection({ onEnter }: { onEnter: () => void }) {
                     src={m.logo}
                     alt={`Logo de ${m.name}`}
                     loading="lazy"
-                    className="h-6 sm:h-7 md:h-8 w-auto object-contain"
+                    className="w-24 sm:w-28 md:w-32 h-6 sm:h-7 md:h-8 object-contain"
                   />
                 </Link>
               </li>
