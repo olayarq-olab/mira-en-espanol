@@ -127,7 +127,7 @@ export default function HeroSection({ onEnter }: { onEnter: () => void }) {
           onClick={onEnter}
           className="mt-6 border border-foreground/20 px-6 sm:px-8 py-3 font-mono-ui text-xs uppercase tracking-widest hover:bg-foreground hover:text-background transition-colors duration-200"
         >
-          Explorar el archivo →
+          VER TODOS LOS MEDIOS →
         </motion.button>
       </div>
     </div>
