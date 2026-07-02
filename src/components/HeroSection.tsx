@@ -96,7 +96,7 @@ export default function HeroSection({ onEnter }: { onEnter: () => void }) {
           aria-label="Medios analizados"
         >
           <span className="label-mono block text-center mb-4 sm:mb-5 text-muted-foreground">
-            Medios en el archivo
+            MEDIOS ANTISEMITAS ANALIZADOS
           </span>
           <ul className="grid grid-cols-3 sm:grid-cols-5 gap-4 sm:gap-6">
             {mediaLogos.map((m) => (
