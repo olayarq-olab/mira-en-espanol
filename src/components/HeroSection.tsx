@@ -104,7 +104,7 @@ export default function HeroSection({ onEnter }: { onEnter: () => void }) {
                 <Link
                   to={`/medios/${newspaperToSlug(m.name)}`}
                   aria-label={`Ver ficha de ${m.name}`}
-                  className="flex items-center justify-center h-8 sm:h-10 w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 rounded-sm border-b-2 border-transparent hover:border-foreground transition-colors duration-300"
+                  className="flex items-center justify-center h-8 sm:h-10 w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 rounded-sm border-b-2 border-transparent hover:border-accent transition-colors duration-300"
                 >
                   <img
                     src={m.logo}
@@ -123,7 +123,7 @@ export default function HeroSection({ onEnter }: { onEnter: () => void }) {
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
           onClick={onEnter}
-          className="mt-6 border border-foreground/20 px-6 sm:px-8 py-3 font-mono-ui text-xs uppercase tracking-widest hover:bg-foreground hover:text-background transition-colors duration-200"
+          className="mt-6 border border-foreground/20 px-6 sm:px-8 py-3 font-mono-ui text-xs uppercase tracking-widest hover:bg-accent hover:text-accent-foreground transition-colors duration-200"
         >
           VER TODOS LOS MEDIOS →
         </motion.button>
