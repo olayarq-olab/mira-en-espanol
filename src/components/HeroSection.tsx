@@ -8,9 +8,10 @@ import elpaisLogo from "@/assets/logos/elpais.png.asset.json";
 import theobjectiveLogo from "@/assets/logos/theobjective.png.asset.json";
 import abcLogo from "@/assets/logos/abc.png.asset.json";
 import elmundoLogo from "@/assets/logos/elmundo.png.asset.json";
+import eldiarioLogo from "@/assets/logos/eldiario.png.asset.json";
 
 const mediaLogos = [
-  { name: "elDiario.es", logo: "/logos/eldiario-clean.png" },
+  { name: "elDiario.es", logo: eldiarioLogo.url },
   { name: "El País", logo: elpaisLogo.url },
   { name: "The Objective", logo: theobjectiveLogo.url },
   { name: "ABC", logo: abcLogo.url },
