@@ -104,7 +104,7 @@ export default function HeroSection({ onEnter }: { onEnter: () => void }) {
                 <Link
                   to={`/medios/${newspaperToSlug(m.name)}`}
                   aria-label={`Ver ficha de ${m.name}`}
-                  className="flex items-center justify-center h-8 sm:h-10 w-full opacity-60 hover:opacity-100 transition-opacity duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 rounded-sm"
+                  className="flex items-center justify-center h-8 sm:h-10 w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 rounded-sm border-b-2 border-transparent hover:border-foreground transition-colors duration-300"
                 >
                   <img
                     src={m.logo}
