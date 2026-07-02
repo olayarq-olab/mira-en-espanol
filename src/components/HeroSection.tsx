@@ -112,9 +112,6 @@ export default function HeroSection({ onEnter }: { onEnter: () => void }) {
                     className="max-h-full w-auto max-w-[100px] sm:max-w-[120px] object-contain"
                   />
                 </Link>
-                <span className="mt-2 text-[10px] sm:text-xs label-mono text-muted-foreground text-center leading-tight">
-                  {m.name}
-                </span>
               </li>
             ))}
           </ul>
